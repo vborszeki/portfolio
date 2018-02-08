@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import StartPage from './StartPage';
 
 class App extends Component {
   render() {
     return (
-      <h1>hello world! <span role="img" aria-label="house">🏠</span></h1>
+      <div>
+        <StartPage />
+      </div>
     );
   }
 }
