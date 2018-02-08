@@ -1,14 +1,14 @@
 import React from 'react';
 import './startPage.css';
 const photos = [
-  '../images/01.png',
-  '../images/02.png',
-  '../images/03.png',
-  '../images/04.png',
-  '../images/05.png',
-  '../images/szekusztatas.gif',
-  '../images/07.png',
-  '../images/08.png'
+  'https://github.com/bntms/portfolio/blob/master/public/images/01.png?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/02.png?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/03.png?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/04.png?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/05.png?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/szekusztatas.gif?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/07.png?raw=true',
+  'https://github.com/bntms/portfolio/blob/master/public/images/08.png?raw=true'
 ];
 
 const StartPage = () => (
