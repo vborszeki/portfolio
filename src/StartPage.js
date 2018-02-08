@@ -23,10 +23,10 @@ const StartPage = () => (
     <nav>
       <ul className="start-page-navigation">
         <li>
-          <a href="#">BENETAMAS</a>
+          <a href="https://bntms.github.io/portfolio">BENETAMAS</a>
         </li>
         <li>
-          <a href="#">WORKS</a>
+          <a href="https://bntms.github.io/portfolio">WORKS</a>
         </li>
       </ul>
     </nav>
