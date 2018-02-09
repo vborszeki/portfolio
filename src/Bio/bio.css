@@ -1,0 +1,108 @@
+.bio-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: calc(100vh / 9 * 8) calc(100vh / 9);
+  grid-gap: 1px;
+  background-color: #000;
+}
+
+.contact-bio {
+  display: grid;
+  grid-template-columns: calc(100vw / 2) calc(100vw / 2);
+  grid-template-rows: calc(100vh / 9 * 8);
+  grid-gap: 1px;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: calc(100vw / 2);
+  grid-template-rows: repeat(8 calc(100vh / 9));
+  grid-gap: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.bio {
+  display: grid;
+  grid-template-columns: calc(100vw / 2);
+  grid-template-rows: calc(100vh / 9) calc(100vh / 9 * 3 + 1px) calc(
+      100vh / 9 * 4 - 2px
+    );
+  grid-gap: 1px;
+  background-color: #fff;
+}
+
+.bio-title,
+.bio-text {
+  padding-left: 21px;
+}
+
+.contact li {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 33px;
+  color: #000;
+  list-style: none;
+  padding-left: 21px;
+  background-color: #fff;
+  height: calc(100vh / 9);
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact-title,
+.bio-title {
+  font-size: 55px;
+  background-color: #fff;
+  align-self: center;
+  height: calc(100vh / 9);
+}
+
+.bio-title {
+  font-family: 'Yantramanav', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.bio-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: justify;
+  padding-right: 21px;
+}
+
+.bio-photo {
+  width: calc(100vw / 2);
+  height: calc(100vh / 9 * 4);
+  border-top: 1px solid #000;
+  background-color: #fff;
+  background-image: url('https://github.com/bntms/portfolio/blob/master/public/images/01.png?raw=true');
+  background-size: cover;
+}
+
+.bio-navigation li {
+  list-style: none;
+  text-decoration: none;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.bio-navigation a {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 55px;
+  color: #000;
+  text-decoration: none;
+  padding-left: 21px;
+  align-self: center;
+}
+
+.bio-navigation {
+  display: grid;
+  grid-template-columns: calc(100vw / 2) calc(100vw / 2);
+  grid-template-rows: calc(100vh / 9);
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #000;
+}

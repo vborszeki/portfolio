@@ -12,7 +12,7 @@ const photos = [
 ];
 
 const StartPage = () => (
-  <div className="container">
+  <div className="start-page-container">
     <ul className="start-page-photos">
       {photos.map(photo => (
         <li key={photo}>
@@ -23,10 +23,10 @@ const StartPage = () => (
     <nav>
       <ul className="start-page-navigation">
         <li>
-          <a href="https://bntms.github.io/portfolio">BENETAMAS</a>
+          <a href="#/bio">BENETAMAS</a>
         </li>
         <li>
-          <a href="https://bntms.github.io/portfolio">WORKS</a>
+          <a href="#/">WORKS</a>
         </li>
       </ul>
     </nav>
