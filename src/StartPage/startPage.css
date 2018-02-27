@@ -29,36 +29,36 @@
   background-color: #fff;
 }
 
-.start-page-navigation {
+.navigation {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .start-page-photos,
-.start-page-navigation {
+.navigation {
   margin: 0;
   padding: 0;
 }
 
-.start-page-navigation {
+.navigation {
   height: 100%;
   background-color: #fff;
 }
 
-.start-page-navigation li {
+.navigation li {
   align-self: center;
   list-style: none;
 }
 
-.start-page-navigation li:nth-child(1) {
+.navigation li:nth-child(1) {
   grid-column-end: span 1;
 }
 
-.start-page-navigation li:nth-child(2) {
+.navigation li:nth-child(2) {
   grid-column: 3 / 4;
 }
 
-.start-page-navigation a {
+.navigation a {
   font-family: 'Yantramanav', sans-serif;
   font-size: 1rem;
   color: #000;

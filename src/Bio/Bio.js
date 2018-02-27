@@ -41,12 +41,12 @@ const Bio = () => (
         </section>
       </div>
       <nav>
-        <ul className="bio-navigation">
+        <ul className="navigation">
           <li>
             <a href="#/">BACK</a>
           </li>
           <li>
-            <a href="#/">WORKS</a>
+            <a href="#/works">WORKS</a>
           </li>
         </ul>
       </nav>

@@ -14,12 +14,12 @@ const StartPage = () => (
         ))}
       </ul>
       <nav>
-        <ul className="start-page-navigation">
+        <ul className="navigation">
           <li>
             <a href="#/bio">BENETAMAS</a>
           </li>
           <li>
-            <a href="#/">WORKS</a>
+            <a href="#/works">WORKS</a>
           </li>
         </ul>
       </nav>
