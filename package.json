@@ -4,7 +4,8 @@
   "private": true,
   "homepage": "https://bntms.github.io/portfolio",
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "gh-pages": "^1.1.0",
+    "jest-fetch-mock": "^1.4.2"
   },
   "dependencies": {
     "react": "^16.2.0",
