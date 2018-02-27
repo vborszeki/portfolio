@@ -1,15 +1,16 @@
 .start-page-container {
+  height: 100%;
+  width: 100%;
   background-color: #000;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: calc(100vw / 2) calc(100vh - 100vw / 2);
-  grid-row-gap: 2px;
+  grid-template-rows: calc(100% * 8/9 - 0.5px) calc(100% * 1/9 - 0.5px);
+  grid-row-gap: 1px;
 }
 
 .start-page-photos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: calc(100vw / 4) calc(100vw / 4);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: 1px;
 }
 
@@ -19,30 +20,24 @@
 }
 
 .start-page-photos li {
+  max-height: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  list-style: none;
+  background-color: #fff;
 }
 
 .start-page-navigation {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-}
-
-.start-page-container > .nav {
-  min-height: 100%;
 }
 
 .start-page-photos,
 .start-page-navigation {
   margin: 0;
   padding: 0;
-}
-
-.start-page-photos li {
-  list-style: none;
-  background-color: #fff;
 }
 
 .start-page-navigation {
@@ -57,7 +52,6 @@
 
 .start-page-navigation li:nth-child(1) {
   grid-column-end: span 1;
-  background-color: #fff;
 }
 
 .start-page-navigation li:nth-child(2) {
@@ -66,7 +60,7 @@
 
 .start-page-navigation a {
   font-family: 'Yantramanav', sans-serif;
-  font-size: 55px;
+  font-size: 1rem;
   color: #000;
   text-decoration: none;
   padding-left: 21px;

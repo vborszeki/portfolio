@@ -1,22 +1,20 @@
 .bio-container {
+  height: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: calc(100vh / 9 * 8) calc(100vh / 9);
+  grid-template-rows: calc(100% * 8/9 - 0.5px) calc(100% * 1/9 - 0.5px);
   grid-gap: 1px;
   background-color: #000;
 }
 
 .contact-bio {
   display: grid;
-  grid-template-columns: calc(100vw / 2) calc(100vw / 2);
-  grid-template-rows: calc(100vh / 9 * 8);
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1px;
 }
 
 .contact {
   display: grid;
-  grid-template-columns: calc(100vw / 2);
-  grid-template-rows: repeat(8 calc(100vh / 9));
+  grid-template-rows: repeat(8, calc(100% * 1/8 - 0.875px));
   grid-gap: 1px;
   margin: 0;
   padding: 0;
@@ -24,12 +22,9 @@
 
 .bio {
   display: grid;
-  grid-template-columns: calc(100vw / 2);
-  grid-template-rows: calc(100vh / 9) calc(100vh / 9 * 3 + 1px) calc(
-      100vh / 9 * 4 - 2px
-    );
-  grid-gap: 1px;
+  grid-template-rows: calc(100% / 8) calc(100% / 8 * 3) calc(100% / 8 * 4);
   background-color: #fff;
+  min-height: 0;
 }
 
 .bio-title,
@@ -38,23 +33,27 @@
 }
 
 .contact li {
+  max-height: 100%;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 33px;
-  color: #000;
+  font-size: 0.6rem;
   list-style: none;
   padding-left: 21px;
   background-color: #fff;
-  height: calc(100vh / 9);
   display: flex;
   align-items: center;
 }
 
-.contact .contact-title,
-.bio-title {
-  font-size: 55px;
+.contact .contact-title {
+  font-size: 1rem;
   background-color: #fff;
   align-self: center;
-  height: calc(100vh / 9);
+  height: 100%;
+}
+
+.bio-title {
+  font-size: 0.8rem;
+  background-color: #fff;
+  align-self: center;
 }
 
 .bio-title {
@@ -65,16 +64,17 @@
 
 .bio-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-size: 0.4rem;
   background-color: #fff;
   overflow: hidden;
+  min-height: 0;
   text-align: justify;
   padding-right: 21px;
 }
 
 .bio-photo {
-  width: calc(100vw / 2);
-  height: calc(100vh / 9 * 4);
+  width: 100%;
+  height: 100%;
   border-top: 1px solid #000;
   background-color: #fff;
   background-image: url('https://github.com/bntms/portfolio/blob/master/public/images/01.png?raw=true');
@@ -91,7 +91,7 @@
 
 .bio-navigation a {
   font-family: 'Yantramanav', sans-serif;
-  font-size: 55px;
+  font-size: 1rem;
   color: #000;
   text-decoration: none;
   padding-left: 21px;
@@ -99,10 +99,9 @@
 }
 
 .bio-navigation {
+  height: 100%;
   display: grid;
-  grid-template-columns: calc(100vw / 2) calc(100vw / 2);
-  grid-template-rows: calc(100vh / 9);
+  grid-template-columns: calc(100% / 2) calc(100% / 2);
   margin: 0;
   padding: 0;
-  border-top: 1px solid #000;
 }
