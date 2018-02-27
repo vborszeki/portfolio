@@ -22,7 +22,7 @@
 
 .bio {
   display: grid;
-  grid-template-rows: calc(100% / 8) calc(100% / 8 * 3) calc(100% / 8 * 4);
+  grid-template-rows: calc(100% / 8) calc(100% / 8 * 3 - 0.5px) calc(100% / 8 * 4 - 0.5px);
   background-color: #fff;
   min-height: 0;
 }
