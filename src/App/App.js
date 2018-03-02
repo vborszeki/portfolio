@@ -27,7 +27,10 @@ class App extends Component {
             exact
             path="/bio"
             render={({ match }) => (
-              <Bio toggleLanguage={() => this.toggleLanguage()} />
+              <Bio
+                toggleLanguage={() => this.toggleLanguage()}
+                language={this.state.language}
+              />
             )}
           />
           <Route exact path="/works" render={({ match }) => <Works />} />
