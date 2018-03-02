@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import ContainerDimensions from 'react-container-dimensions';
 import Wrapper from '../Wrapper/Wrapper';
 import Selected from './Selected';
-import { photos } from '../mockImages';
+import { photos } from './mockApiResponse';
 import './works.css';
 
 class Works extends Component {
   constructor() {
     super();
     this.state = {
-      selectedCategory: 'architecture'
+      selectedCategory: 'architecture',
+      hoveredImageId: null,
+      hoveredTitleId: null
     };
   }
 
@@ -22,26 +24,87 @@ class Works extends Component {
     this.setState({ selectedCategory });
   }
 
+  handleImageMouseOver(e) {
+    this.setState({ hoveredImageId: e.target.parentNode.value });
+  }
+
+  handleImageMouseOut() {
+    this.setState({ hoveredImageId: null });
+  }
+
+  handleTitleMouseOver(e) {
+    this.setState({ hoveredTitleId: e.target.value });
+  }
+
+  handleTitleMouseOut() {
+    this.setState({ hoveredTitleId: null });
+  }
+
   render() {
-    const workPhotos = [...photos, ...photos];
+    const projectNames = photos.map(e => ({
+      id: e.id,
+      projectName: e.projectName
+    }));
+
+    const workPhotos = [
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      photos[0],
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      photos[1],
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      photos[2],
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      { id: null, photoUrl: '' },
+      photos[3],
+      { id: null, photoUrl: '' }
+    ];
 
     return (
       <Wrapper>
         <div className="works-container">
           <div className="works-content">
             <ul className="works-photos">
-              {workPhotos.map((photo, i) => (
-                <li key={i}>
-                  <img src={photo} alt="" />
+              {workPhotos.map(e => (
+                <li key={e.id} value={e.id}>
+                  <img
+                    src={e.photoUrl}
+                    alt=""
+                    onMouseOver={e => this.handleImageMouseOver(e)}
+                    onMouseOut={() => this.handleImageMouseOut()}
+                    className={
+                      this.state.hoveredTitleId !== null &&
+                      e.id !== this.state.hoveredTitleId
+                        ? 'hide-project-image'
+                        : null
+                    }
+                  />
                 </li>
               ))}
             </ul>
             <div className="works-list">
               <ul className="works-project-list">
-                <li>D 365 DAYS</li>
-                <li>FURNANCE</li>
-                <li>MKE</li>
-                <li>DESIGN WEEK</li>
+                {projectNames.map(e => (
+                  <li
+                    key={e.id}
+                    value={e.id}
+                    onMouseOver={e => this.handleTitleMouseOver(e)}
+                    onMouseOut={() => this.handleTitleMouseOut()}
+                    className={
+                      this.state.hoveredImageId !== null &&
+                      e.id !== this.state.hoveredImageId
+                        ? 'hide-project-title'
+                        : null
+                    }
+                  >
+                    {e.projectName}
+                  </li>
+                ))}
               </ul>
               <ul
                 className="works-category-list"

@@ -27,6 +27,7 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .works-photos li {
@@ -75,6 +76,7 @@
   padding-left: 21px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .works-category-list li {
@@ -83,4 +85,12 @@
 
 .works-project-list li {
   font-size: 0.4rem;
+}
+
+.hide-project-title {
+  color: #fff;
+}
+
+.hide-project-image {
+  opacity: 0;
 }
