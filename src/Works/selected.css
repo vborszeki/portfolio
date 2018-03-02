@@ -1,0 +1,17 @@
+svg {
+  display: block;
+  margin-left: auto;
+}
+
+.selected-x {
+  stroke: #000;
+  fill: transparent;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.selected-border {
+  stroke: #000;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}

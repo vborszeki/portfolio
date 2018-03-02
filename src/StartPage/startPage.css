@@ -10,8 +10,10 @@
 .start-page-photos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, calc(100% / 2 - 0.5px));
   grid-gap: 1px;
+  min-height: 0;
+  min-width: 0;
 }
 
 .start-page-photos li img {
@@ -66,4 +68,6 @@
   text-decoration: none;
   padding-left: 21px;
   align-self: center;
+  display: block;
+  width: calc(100% - 21px);
 }

@@ -17,13 +17,16 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, calc(100% / 4 - 0.75px));
   grid-gap: 1px;
+  min-height: 0;
+  min-width: 0;
 }
 
 .works-photos li img {
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
 }
 
 .works-photos li {
@@ -40,6 +43,8 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-gap: 1px;
+  min-width: 0;
+  min-height: 0;
 }
 
 .works-project-list,
