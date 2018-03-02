@@ -2,7 +2,7 @@ import React from 'react';
 import Wrapper from '../Wrapper/Wrapper';
 import './bio.css';
 
-const Bio = () => (
+const Bio = props => (
   <Wrapper>
     <div className="bio-container">
       <div className="contact-bio">
@@ -17,7 +17,12 @@ const Bio = () => (
           <li>1111 BUDAPEST VASARHELYI PAL U. 10</li>
         </ul>
         <section className="bio">
-          <p className="bio-title">BIO</p>
+          <div className="bio-title">
+            <p>BIO</p>
+            <span className="bio-language" onClick={props.toggleLanguage}>
+              ENG / HU
+            </span>
+          </div>
           <p className="bio-text">
             Lorem ipsum dolor amet next level af iceland everyday carry woke.
             Marfa jianbing hexagon lomo bushwick affogato. Raclette glossier

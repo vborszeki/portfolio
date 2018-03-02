@@ -22,7 +22,9 @@
 
 .bio {
   display: grid;
-  grid-template-rows: calc(100% / 8) calc(100% / 8 * 3 - 0.5px) calc(100% / 8 * 4 - 0.5px);
+  grid-template-rows: calc(100% / 8) calc(100% / 8 * 3 - 0.5px) calc(
+      100% / 8 * 4 - 0.5px
+    );
   background-color: #fff;
   min-height: 0;
 }
@@ -51,15 +53,17 @@
 }
 
 .bio-title {
-  font-size: 0.8rem;
-  background-color: #fff;
-  align-self: center;
-}
-
-.bio-title {
   font-family: 'Yantramanav', sans-serif;
+  background-color: #fff;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.bio-language {
+  padding-right: 21px;
+  font-size: 0.4rem;
 }
 
 .bio-text {
