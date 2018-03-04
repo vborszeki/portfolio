@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ContainerDimensions from 'react-container-dimensions';
+import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper/Wrapper';
 import Selected from './Selected';
 import { photos } from './mockApiResponse';
@@ -9,19 +10,19 @@ class Works extends Component {
   constructor() {
     super();
     this.state = {
-      selectedCategory: 'architecture',
+      hoveredCategory: '',
       hoveredImageId: null,
       hoveredTitleId: null
     };
   }
 
-  handleClick(e) {
-    const selectedCategory =
-      typeof e.target.className === 'string'
-        ? e.target.className
-        : e.target.parentNode.className;
-
-    this.setState({ selectedCategory });
+  handleCategoryMouseOver(e) {
+    this.setState({
+      hoveredCategory: e.target.innerHTML
+        .toString()
+        .toLowerCase()
+        .split(' ')[0]
+    });
   }
 
   handleImageMouseOver(e) {
@@ -90,57 +91,72 @@ class Works extends Component {
             <div className="works-list">
               <ul className="works-project-list">
                 {projectNames.map(e => (
-                  <li
+                  <Link
+                    to={`/category/${this.props.category ||
+                      this.state.selectedCategory}/${
+                      this.state.hoveredTitleId
+                    }`}
                     key={e.id}
-                    value={e.id}
-                    onMouseOver={e => this.handleTitleMouseOver(e)}
-                    onMouseOut={() => this.handleTitleMouseOut()}
-                    className={
-                      this.state.hoveredImageId !== null &&
-                      e.id !== this.state.hoveredImageId
-                        ? 'hide-project-title'
-                        : null
-                    }
                   >
-                    {e.projectName}
-                  </li>
+                    <li
+                      value={e.id}
+                      onMouseOver={e => this.handleTitleMouseOver(e)}
+                      onMouseOut={() => this.handleTitleMouseOut()}
+                      className={
+                        this.state.hoveredImageId !== null &&
+                        e.id !== this.state.hoveredImageId
+                          ? 'hide-project-title'
+                          : null
+                      }
+                    >
+                      {e.projectName}
+                    </li>
+                  </Link>
                 ))}
               </ul>
               <ul
                 className="works-category-list"
-                onClick={e => this.handleClick(e)}
+                onMouseOver={e => this.handleCategoryMouseOver(e)}
               >
                 <li className="architecture">
-                  ARCHITECTURE{' '}
-                  {this.state.selectedCategory === 'architecture' && (
-                    <ContainerDimensions>
-                      {({ height }) => <Selected height={height} />}
-                    </ContainerDimensions>
-                  )}
+                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                    ARCHITECTURE{' '}
+                    {this.props.category === 'architecture' && (
+                      <ContainerDimensions>
+                        {({ height }) => <Selected height={height} />}
+                      </ContainerDimensions>
+                    )}
+                  </Link>
                 </li>
                 <li className="installation">
-                  INSTALLATION{' '}
-                  {this.state.selectedCategory === 'installation' && (
-                    <ContainerDimensions>
-                      {({ height }) => <Selected height={height} />}
-                    </ContainerDimensions>
-                  )}
+                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                    INSTALLATION{' '}
+                    {this.props.category === 'installation' && (
+                      <ContainerDimensions>
+                        {({ height }) => <Selected height={height} />}
+                      </ContainerDimensions>
+                    )}
+                  </Link>
                 </li>
                 <li className="object">
-                  OBJECT{' '}
-                  {this.state.selectedCategory === 'object' && (
-                    <ContainerDimensions>
-                      {({ height }) => <Selected height={height} />}
-                    </ContainerDimensions>
-                  )}
+                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                    OBJECT{' '}
+                    {this.props.category === 'object' && (
+                      <ContainerDimensions>
+                        {({ height }) => <Selected height={height} />}
+                      </ContainerDimensions>
+                    )}
+                  </Link>
                 </li>
                 <li className="experiment">
-                  EXPERIMENT{' '}
-                  {this.state.selectedCategory === 'experiment' && (
-                    <ContainerDimensions>
-                      {({ height }) => <Selected height={height} />}
-                    </ContainerDimensions>
-                  )}
+                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                    EXPERIMENT{' '}
+                    {this.props.category === 'experiment' && (
+                      <ContainerDimensions>
+                        {({ height }) => <Selected height={height} />}
+                      </ContainerDimensions>
+                    )}
+                  </Link>
                 </li>
               </ul>
             </div>

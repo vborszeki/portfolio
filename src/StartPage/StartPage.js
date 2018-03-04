@@ -42,7 +42,7 @@ class StartPage extends Component {
                 <a href="#/bio">BENETAMAS</a>
               </li>
               <li>
-                <a href="#/works">WORKS</a>
+                <a href="#/category/architecture">WORKS</a>
               </li>
             </ul>
           </nav>

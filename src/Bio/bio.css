@@ -1,7 +1,7 @@
 .bio-container {
   height: 100%;
   display: grid;
-  grid-template-rows: calc(100% * 8/9 - 0.5px) calc(100% * 1/9 - 0.5px);
+  grid-template-rows: calc(100% * 8/9 - 0.5px) 1fr;
   grid-gap: 1px;
   background-color: #000;
 }
@@ -82,31 +82,6 @@
   height: 100%;
   border-top: 1px solid #000;
   background-color: #fff;
-  background-image: url('https://www.benetamas.com/public/settings/February2018/eDRpm3esw0O8BAiqtBl0.png');
+  background-image: url('https://www.benetamas.com/public/photos/March2018/3rpvkx3iyg05M5RZtfHl.png');
   background-size: cover;
-}
-
-.bio-navigation li {
-  list-style: none;
-  text-decoration: none;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-}
-
-.bio-navigation a {
-  font-family: 'Yantramanav', sans-serif;
-  font-size: 1rem;
-  color: #000;
-  text-decoration: none;
-  padding-left: 21px;
-  align-self: center;
-}
-
-.bio-navigation {
-  height: 100%;
-  display: grid;
-  grid-template-columns: calc(100% / 2) calc(100% / 2);
-  margin: 0;
-  padding: 0;
 }

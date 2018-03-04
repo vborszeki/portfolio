@@ -3,6 +3,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
 import Bio from '../Bio/Bio';
 import Works from '../Works/Works';
+import Project from '../Project/Project';
 
 class App extends Component {
   constructor() {
@@ -33,7 +34,21 @@ class App extends Component {
               />
             )}
           />
-          <Route exact path="/works" render={({ match }) => <Works />} />
+          <Route
+            exact
+            path="/category/:category"
+            render={({ match }) => <Works category={match.params.category} />}
+          />
+          <Route
+            exact
+            path="/category/:category/:projectId"
+            render={({ match }) => (
+              <Project
+                category={match.params.category}
+                projectId={match.params.projectId}
+              />
+            )}
+          />
         </div>
       </Router>
     );
