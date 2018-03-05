@@ -67,7 +67,7 @@ const Bio = props => (
             <a href="#/">BACK</a>
           </li>
           <li>
-            <a href="#/category/architecture">WORKS</a>
+            <a href="#/architecture">WORKS</a>
           </li>
         </ul>
       </nav>

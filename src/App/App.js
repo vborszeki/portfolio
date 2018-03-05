@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
 import Bio from '../Bio/Bio';
 import Works from '../Works/Works';
@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Switch>
           <Route exact path="/" render={() => <StartPage />} />
           <Route
             exact
@@ -36,12 +36,12 @@ class App extends Component {
           />
           <Route
             exact
-            path="/category/:category"
+            path="/:category"
             render={({ match }) => <Works category={match.params.category} />}
           />
           <Route
             exact
-            path="/category/:category/:projectId"
+            path="/:category/:projectId"
             render={({ match }) => (
               <Project
                 category={match.params.category}
@@ -49,7 +49,7 @@ class App extends Component {
               />
             )}
           />
-        </div>
+        </Switch>
       </Router>
     );
   }

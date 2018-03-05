@@ -24,7 +24,7 @@ const Project = props => {
               <a href="#/bio">BENETAMAS</a>
             </li>
             <li>
-              <a href={`#/category/${props.category}`}>BACK</a>
+              <a href={`#/${props.category}`}>BACK</a>
             </li>
           </ul>
         </nav>

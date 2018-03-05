@@ -6,7 +6,16 @@ class StartPage extends Component {
   constructor() {
     super();
     this.state = {
-      photos: [{}, {}, {}, {}, {}, {}, {}, {}]
+      photos: [
+        { id: 100000001 },
+        { id: 100000002 },
+        { id: 100000003 },
+        { id: 100000004 },
+        { id: 100000005 },
+        { id: 100000006 },
+        { id: 100000007 },
+        { id: 100000008 }
+      ]
     };
   }
 
@@ -42,7 +51,7 @@ class StartPage extends Component {
                 <a href="#/bio">BENETAMAS</a>
               </li>
               <li>
-                <a href="#/category/architecture">WORKS</a>
+                <a href="#/architecture">WORKS</a>
               </li>
             </ul>
           </nav>

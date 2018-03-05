@@ -3,7 +3,7 @@ import ContainerDimensions from 'react-container-dimensions';
 import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper/Wrapper';
 import Selected from './Selected';
-import { photos } from './mockApiResponse';
+import { projectsPlaceholder } from './projectsPlaceholder';
 import './works.css';
 
 class Works extends Component {
@@ -12,8 +12,27 @@ class Works extends Component {
     this.state = {
       hoveredCategory: '',
       hoveredImageId: null,
-      hoveredTitleId: null
+      hoveredTitleId: null,
+      projects: projectsPlaceholder
     };
+  }
+
+  componentDidMount() {
+    this.fetchProjectsForCategory(this.props.category);
+  }
+
+  fetchProjectsForCategory(category) {
+    fetch(`https://www.benetamas.com/api/category/${category}`)
+      .then(res => res.json())
+      .then(json =>
+        this.setState({ projects: this.shuffleProjects(json.projects) })
+      )
+      .catch(console.error);
+  }
+
+  shuffleProjects(projects) {
+    const paddedProjects = [...projects, ...projectsPlaceholder].slice(0, 16);
+    return paddedProjects.sort(() => 0.5 - Math.random());
   }
 
   handleCategoryMouseOver(e) {
@@ -41,40 +60,22 @@ class Works extends Component {
     this.setState({ hoveredTitleId: null });
   }
 
-  render() {
-    const projectNames = photos.map(e => ({
-      id: e.id,
-      projectName: e.projectName
-    }));
+  handleCategoryClick() {
+    this.fetchProjectsForCategory(this.state.hoveredCategory);
+  }
 
-    const workPhotos = [
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      photos[0],
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      photos[1],
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      photos[2],
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      { id: null, photoUrl: '' },
-      photos[3],
-      { id: null, photoUrl: '' }
-    ];
+  render() {
+    const { projects } = this.state;
 
     return (
       <Wrapper>
         <div className="works-container">
           <div className="works-content">
             <ul className="works-photos">
-              {workPhotos.map(e => (
+              {projects.map(e => (
                 <li key={e.id} value={e.id}>
                   <img
-                    src={e.photoUrl}
+                    src={e.photo.photoUrl}
                     alt=""
                     onMouseOver={e => this.handleImageMouseOver(e)}
                     onMouseOut={() => this.handleImageMouseOut()}
@@ -90,12 +91,9 @@ class Works extends Component {
             </ul>
             <div className="works-list">
               <ul className="works-project-list">
-                {projectNames.map(e => (
+                {projects.filter(e => e.photo.photoUrl !== '').map(e => (
                   <Link
-                    to={`/category/${this.props.category ||
-                      this.state.selectedCategory}/${
-                      this.state.hoveredTitleId
-                    }`}
+                    to={`/${this.props.category}/${this.state.hoveredTitleId}`}
                     key={e.id}
                   >
                     <li
@@ -109,7 +107,7 @@ class Works extends Component {
                           : null
                       }
                     >
-                      {e.projectName}
+                      {e.title}
                     </li>
                   </Link>
                 ))}
@@ -117,9 +115,10 @@ class Works extends Component {
               <ul
                 className="works-category-list"
                 onMouseOver={e => this.handleCategoryMouseOver(e)}
+                onClick={() => this.handleCategoryClick()}
               >
                 <li className="architecture">
-                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                  <Link to={`/${this.state.hoveredCategory}`}>
                     ARCHITECTURE{' '}
                     {this.props.category === 'architecture' && (
                       <ContainerDimensions>
@@ -129,7 +128,7 @@ class Works extends Component {
                   </Link>
                 </li>
                 <li className="installation">
-                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                  <Link to={`/${this.state.hoveredCategory}`}>
                     INSTALLATION{' '}
                     {this.props.category === 'installation' && (
                       <ContainerDimensions>
@@ -139,7 +138,7 @@ class Works extends Component {
                   </Link>
                 </li>
                 <li className="object">
-                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                  <Link to={`/${this.state.hoveredCategory}`}>
                     OBJECT{' '}
                     {this.props.category === 'object' && (
                       <ContainerDimensions>
@@ -149,7 +148,7 @@ class Works extends Component {
                   </Link>
                 </li>
                 <li className="experiment">
-                  <Link to={`/category/${this.state.hoveredCategory}`}>
+                  <Link to={`/${this.state.hoveredCategory}`}>
                     EXPERIMENT{' '}
                     {this.props.category === 'experiment' && (
                       <ContainerDimensions>
