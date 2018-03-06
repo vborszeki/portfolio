@@ -38,6 +38,20 @@ class Project extends Component {
     }));
   }
 
+  handleNextPhotoClick() {
+    if (this.state.indexOfPhoto === this.state.project.numberOfPhotos - 1) {
+      this.setState({ indexOfPhoto: -1 });
+    }
+    this.setState(prevState => ({ indexOfPhoto: prevState.indexOfPhoto + 1 }));
+  }
+
+  handlePrevPhotoClick() {
+    if (this.state.indexOfPhoto === 0) {
+      this.setState({ indexOfPhoto: this.state.project.numberOfPhotos });
+    }
+    this.setState(prevState => ({ indexOfPhoto: prevState.indexOfPhoto - 1 }));
+  }
+
   render() {
     const { project, indexOfPhoto } = this.state;
 
@@ -53,6 +67,14 @@ class Project extends Component {
                     : ''
                 }
                 alt=""
+              />
+              <div
+                className="prev-photo"
+                onClick={() => this.handlePrevPhotoClick()}
+              />
+              <div
+                className="next-photo"
+                onClick={() => this.handleNextPhotoClick()}
               />
             </div>
             <div

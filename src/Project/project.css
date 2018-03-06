@@ -20,6 +20,7 @@
   min-height: 0;
   min-width: 0;
   cursor: pointer;
+  position: relative;
 }
 
 .project-photos img {
@@ -118,4 +119,20 @@
   background-color: #fff;
   min-height: 0;
   padding-bottom: 2%;
+}
+
+.next-photo,
+.prev-photo {
+  position: absolute;
+  height: 100%;
+  width: calc(100% / 2);
+  z-index: 1;
+}
+
+.prev-photo {
+  left: 0;
+}
+
+.next-photo {
+  right: 0;
 }
