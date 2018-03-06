@@ -53,7 +53,7 @@ class Works extends Component {
   }
 
   handleTitleMouseOver(e) {
-    this.setState({ hoveredTitleId: e.target.value });
+    this.setState({ hoveredTitleId: e.target.parentNode.value });
   }
 
   handleTitleMouseOut() {
@@ -92,29 +92,34 @@ class Works extends Component {
             <div className="works-list">
               <ul className="works-project-list">
                 {projects.filter(e => e.photo.photoUrl !== '').map(e => (
-                  <Link
-                    to={`/${this.props.category}/${this.state.hoveredTitleId}`}
+                  <li
                     key={e.id}
+                    value={e.id}
+                    onMouseOver={e => this.handleTitleMouseOver(e)}
+                    onMouseOut={() => this.handleTitleMouseOut()}
+                    onFocus={e => this.handleTitleMouseOver(e)}
+                    onBlur={() => this.handleTitleMouseOut()}
+                    className={
+                      this.state.hoveredImageId !== null &&
+                      e.id !== this.state.hoveredImageId
+                        ? 'hide-project-title'
+                        : null
+                    }
                   >
-                    <li
-                      value={e.id}
-                      onMouseOver={e => this.handleTitleMouseOver(e)}
-                      onMouseOut={() => this.handleTitleMouseOut()}
-                      className={
-                        this.state.hoveredImageId !== null &&
-                        e.id !== this.state.hoveredImageId
-                          ? 'hide-project-title'
-                          : null
-                      }
+                    <Link
+                      to={`/${this.props.category}/${
+                        this.state.hoveredTitleId
+                      }`}
                     >
                       {e.title}
-                    </li>
-                  </Link>
+                    </Link>
+                  </li>
                 ))}
               </ul>
               <ul
                 className="works-category-list"
                 onMouseOver={e => this.handleCategoryMouseOver(e)}
+                onFocus={e => this.handleCategoryMouseOver(e)}
                 onClick={() => this.handleCategoryClick()}
               >
                 <li className="architecture">

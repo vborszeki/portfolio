@@ -46,6 +46,8 @@ class App extends Component {
               <Project
                 category={match.params.category}
                 projectId={match.params.projectId}
+                toggleLanguage={() => this.toggleLanguage()}
+                language={this.state.language}
               />
             )}
           />

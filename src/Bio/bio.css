@@ -14,7 +14,7 @@
 
 .contact {
   display: grid;
-  grid-template-rows: repeat(8, calc(100% * 1/8 - 0.875px));
+  grid-template-rows: repeat(8, 1fr);
   grid-gap: 1px;
   margin: 0;
   padding: 0;
@@ -36,7 +36,6 @@
 
 .contact li {
   max-height: 100%;
-  font-family: 'Yantramanav', sans-serif;
   font-size: 0.6rem;
   list-style: none;
   padding-left: 21px;
@@ -53,7 +52,6 @@
 }
 
 .bio-title {
-  font-family: 'Yantramanav', sans-serif;
   background-color: #fff;
   font-size: 0.8rem;
   display: flex;
@@ -65,6 +63,7 @@
   padding-right: 21px;
   font-size: 0.4rem;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .bio-text {
