@@ -8,12 +8,20 @@ const Bio = props => (
       <div className="contact-bio">
         <ul className="contact">
           <li className="contact-title">LINKS</li>
-          <li>VIZTORONY.HU</li>
-          <li>PALMA.STUDIO.HU</li>
-          <li>STUDIO.B.HU</li>
+          <li>
+            <a href="https://benetamas.com">VIZTORONY.HU</a>
+          </li>
+          <li>
+            <a href="https://benetamas.com">PALMA.STUDIO.HU</a>
+          </li>
+          <li>
+            <a href="https://benetamas.com">STUDIO.B.HU</a>
+          </li>
           <li className="contact-title">CONTACT</li>
           <li>0036706338750</li>
-          <li>INFO@BENETAMAS.COM</li>
+          <li>
+            <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
+          </li>
           <li>1111 BUDAPEST VASARHELYI PAL U. 10</li>
         </ul>
         <section className="bio">
