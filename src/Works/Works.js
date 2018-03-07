@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper/Wrapper';
 import Selected from '../Selected/Selected';
 import { projectsPlaceholder } from './projectsPlaceholder';
+import { placeProjectsInGrid } from './utils';
 import './works.css';
 
 class Works extends Component {
@@ -25,14 +26,9 @@ class Works extends Component {
     fetch(`https://www.benetamas.com/api/category/${category}`)
       .then(res => res.json())
       .then(json =>
-        this.setState({ projects: this.shuffleProjects(json.projects) })
+        this.setState({ projects: placeProjectsInGrid(json.projects) })
       )
       .catch(console.error);
-  }
-
-  shuffleProjects(projects) {
-    const paddedProjects = [...projects, ...projectsPlaceholder].slice(0, 16);
-    return paddedProjects.sort(() => 0.5 - Math.random());
   }
 
   handleCategoryMouseOver(e) {
