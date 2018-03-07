@@ -3,7 +3,7 @@ import { projectsPlaceholder } from './projectsPlaceholder';
 export function placeProjectsInGrid(projects) {
   const numberOfProjects = projects.length;
   let randomPlaces = [];
-  let paddedProjects = projectsPlaceholder;
+  let paddedProjects = [...projectsPlaceholder];
 
   if (numberOfProjects === 16) {
     return projects;
