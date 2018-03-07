@@ -136,3 +136,10 @@
 .next-photo {
   right: 0;
 }
+
+.project-photos__preloaded {
+  visibility: hidden;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+}

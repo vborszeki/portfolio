@@ -52,8 +52,13 @@ class Project extends Component {
     this.setState(prevState => ({ indexOfPhoto: prevState.indexOfPhoto - 1 }));
   }
 
-  render() {
+  getImagesToPreload() {
     const { project, indexOfPhoto } = this.state;
+    return project.photos.slice(indexOfPhoto + 1, indexOfPhoto + 2);
+  }
+
+  render() {
+    const { project, indexOfPhoto, expandDescription } = this.state;
 
     return (
       <Wrapper>
@@ -68,6 +73,12 @@ class Project extends Component {
                 }
                 alt=""
               />
+              <div className="project-photos__preloaded">
+                {project.photos.length > 1 &&
+                  this.getImagesToPreload().map(image => (
+                    <img key={image.photoUrl} src={image.photoUrl} alt="" />
+                  ))}
+              </div>
               <div
                 className="prev-photo"
                 onClick={() => this.handlePrevPhotoClick()}
@@ -79,7 +90,7 @@ class Project extends Component {
             </div>
             <div
               className={
-                this.state.expandDescription
+                expandDescription
                   ? 'project-details--expanded'
                   : 'project-details'
               }
@@ -106,7 +117,7 @@ class Project extends Component {
                   className="project-language"
                   onClick={() => this.handleLanguageClick()}
                   style={{
-                    display: this.state.expandDescription ? 'none' : 'grid'
+                    display: expandDescription ? 'none' : 'grid'
                   }}
                 >
                   ENG / HU
@@ -115,7 +126,7 @@ class Project extends Component {
               <ul
                 className="project-category-list"
                 style={{
-                  display: this.state.expandDescription ? 'none' : 'grid'
+                  display: expandDescription ? 'none' : 'grid'
                 }}
               >
                 <li className="architecture">ARCHITECTURE</li>
