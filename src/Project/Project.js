@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ContainerDimensions from 'react-container-dimensions';
-import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper/Wrapper';
 import ProjectPager from './ProjectPager';
 import './project.css';
