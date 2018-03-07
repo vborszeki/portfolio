@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ContainerDimensions from 'react-container-dimensions';
 import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper/Wrapper';
-import Selected from './Selected';
+import Selected from '../Selected/Selected';
 import { projectsPlaceholder } from './projectsPlaceholder';
 import './works.css';
 

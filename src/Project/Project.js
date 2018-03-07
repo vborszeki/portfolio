@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import ContainerDimensions from 'react-container-dimensions';
+import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper/Wrapper';
+import ProjectPager from './ProjectPager';
 import './project.css';
 
 class Project extends Component {
@@ -129,10 +132,46 @@ class Project extends Component {
                   display: expandDescription ? 'none' : 'grid'
                 }}
               >
-                <li className="architecture">ARCHITECTURE</li>
-                <li className="installation">INSTALLATION</li>
-                <li className="object">OBJECT</li>
-                <li className="experiment">EXPERIMENT</li>
+                <li className="architecture">
+                  ARCHITECTURE
+                  {this.props.category === 'architecture' && (
+                    <ContainerDimensions>
+                      {({ height }) => (
+                        <ProjectPager counter="1/4" height={height} />
+                      )}
+                    </ContainerDimensions>
+                  )}
+                </li>
+                <li className="installation">
+                  INSTALLATION
+                  {this.props.category === 'installation' && (
+                    <ContainerDimensions>
+                      {({ height }) => (
+                        <ProjectPager counter="" height={height} />
+                      )}
+                    </ContainerDimensions>
+                  )}
+                </li>
+                <li className="object">
+                  OBJECT
+                  {this.props.category === 'object' && (
+                    <ContainerDimensions>
+                      {({ height }) => (
+                        <ProjectPager counter="" height={height} />
+                      )}
+                    </ContainerDimensions>
+                  )}
+                </li>
+                <li className="experiment">
+                  EXPERIMENT
+                  {this.props.category === 'experiment' && (
+                    <ContainerDimensions>
+                      {({ height }) => (
+                        <ProjectPager counter="" height={height} />
+                      )}
+                    </ContainerDimensions>
+                  )}
+                </li>
               </ul>
             </div>
           </div>

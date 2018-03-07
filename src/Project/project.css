@@ -63,6 +63,15 @@
   cursor: pointer;
 }
 
+.project-category-list li a {
+  height: 100%;
+  width: 100%;
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
 .project-header {
   font-size: 0.4rem;
   padding-left: 21px;

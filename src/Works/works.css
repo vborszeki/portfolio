@@ -73,7 +73,6 @@
 .works-category-list li,
 .works-project-list li {
   height: 100%;
-  font-family: 'Yantramanav', sans-serif;
   background-color: #fff;
   cursor: pointer;
 }
