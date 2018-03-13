@@ -61,6 +61,7 @@ class Project extends Component {
 
   render() {
     const { project, indexOfPhoto, expandDescription } = this.state;
+    const counter = `1/${project.numberOfProjects}`;
 
     return (
       <Wrapper>
@@ -136,7 +137,7 @@ class Project extends Component {
                   {this.props.category === 'architecture' && (
                     <ContainerDimensions>
                       {({ height }) => (
-                        <ProjectPager counter="1/4" height={height} />
+                        <ProjectPager counter={counter} height={height} />
                       )}
                     </ContainerDimensions>
                   )}

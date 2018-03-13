@@ -43,7 +43,7 @@ class Works extends Component {
     this.setState({
       friendlyUrlTitle: this.state.projects.find(
         project => project.id === e.target.parentNode.value
-      ).urlFriendlyTitle
+      ).friendlyUrlTitle
     });
   }
 
@@ -72,7 +72,7 @@ class Works extends Component {
                     onMouseOut={() => this.handleProjectMouseOut()}
                     className={
                       this.state.friendlyUrlTitle !== '' &&
-                      e.urlFriendlyTitle !== this.state.friendlyUrlTitle
+                      e.friendlyUrlTitle !== this.state.friendlyUrlTitle
                         ? 'hide-project-image'
                         : null
                     }
@@ -92,7 +92,7 @@ class Works extends Component {
                     onBlur={() => this.handleProjectMouseOut()}
                     className={
                       this.state.friendlyUrlTitle !== '' &&
-                      e.urlFriendlyTitle !== this.state.friendlyUrlTitle
+                      e.friendlyUrlTitle !== this.state.friendlyUrlTitle
                         ? 'hide-project-title'
                         : null
                     }
