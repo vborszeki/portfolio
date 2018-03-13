@@ -75,7 +75,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.4rem;
   background-color: #fff;
-  overflow: scroll;
+  overflow: hidden;
   min-height: 0;
   text-align: justify;
   padding-right: 21px;

@@ -21,7 +21,7 @@ class Project extends Component {
   fetchProject() {
     fetch(
       `https://www.benetamas.com/api/category/${this.props.category}/project/${
-        this.props.projectId
+        this.props.projectTitle
       }?lang=${this.props.language}`
     )
       .then(res => res.json())

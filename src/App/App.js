@@ -41,11 +41,11 @@ class App extends Component {
           />
           <Route
             exact
-            path="/:category/:projectId"
+            path="/:category/:projectTitle"
             render={({ match }) => (
               <Project
                 category={match.params.category}
-                projectId={match.params.projectId}
+                projectTitle={match.params.projectTitle}
                 toggleLanguage={() => this.toggleLanguage()}
                 language={this.state.language}
               />

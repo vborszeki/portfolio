@@ -12,8 +12,7 @@ class Works extends Component {
     super();
     this.state = {
       hoveredCategory: '',
-      hoveredImageId: null,
-      hoveredTitleId: null,
+      friendlyUrlTitle: '',
       projects: projectsPlaceholder
     };
   }
@@ -40,20 +39,16 @@ class Works extends Component {
     });
   }
 
-  handleImageMouseOver(e) {
-    this.setState({ hoveredImageId: e.target.parentNode.value });
+  handleProjectMouseOver(e) {
+    this.setState({
+      friendlyUrlTitle: this.state.projects.find(
+        project => project.id === e.target.parentNode.value
+      ).urlFriendlyTitle
+    });
   }
 
-  handleImageMouseOut() {
-    this.setState({ hoveredImageId: null });
-  }
-
-  handleTitleMouseOver(e) {
-    this.setState({ hoveredTitleId: e.target.parentNode.value });
-  }
-
-  handleTitleMouseOut() {
-    this.setState({ hoveredTitleId: null });
+  handleProjectMouseOut() {
+    this.setState({ friendlyUrlTitle: '' });
   }
 
   handleCategoryClick() {
@@ -73,11 +68,11 @@ class Works extends Component {
                   <img
                     src={e.photo.photoUrl}
                     alt=""
-                    onMouseOver={e => this.handleImageMouseOver(e)}
-                    onMouseOut={() => this.handleImageMouseOut()}
+                    onMouseOver={e => this.handleProjectMouseOver(e)}
+                    onMouseOut={() => this.handleProjectMouseOut()}
                     className={
-                      this.state.hoveredTitleId !== null &&
-                      e.id !== this.state.hoveredTitleId
+                      this.state.friendlyUrlTitle !== '' &&
+                      e.urlFriendlyTitle !== this.state.friendlyUrlTitle
                         ? 'hide-project-image'
                         : null
                     }
@@ -91,20 +86,20 @@ class Works extends Component {
                   <li
                     key={e.id}
                     value={e.id}
-                    onMouseOver={e => this.handleTitleMouseOver(e)}
-                    onMouseOut={() => this.handleTitleMouseOut()}
-                    onFocus={e => this.handleTitleMouseOver(e)}
-                    onBlur={() => this.handleTitleMouseOut()}
+                    onMouseOver={e => this.handleProjectMouseOver(e)}
+                    onMouseOut={() => this.handleProjectMouseOut()}
+                    onFocus={e => this.handleProjectMouseOver(e)}
+                    onBlur={() => this.handleProjectMouseOut()}
                     className={
-                      this.state.hoveredImageId !== null &&
-                      e.id !== this.state.hoveredImageId
+                      this.state.friendlyUrlTitle !== '' &&
+                      e.urlFriendlyTitle !== this.state.friendlyUrlTitle
                         ? 'hide-project-title'
                         : null
                     }
                   >
                     <Link
                       to={`/${this.props.category}/${
-                        this.state.hoveredTitleId
+                        this.state.friendlyUrlTitle
                       }`}
                     >
                       {e.title}
