@@ -65,8 +65,8 @@ class Project extends Component {
 
   render() {
     const { project, indexOfPhoto, expandDescription } = this.state;
-    const counter = project.numberOfProjects
-      ? `1/${project.numberOfProjects}`
+    const counter = project.projectIndex
+      ? `${project.projectIndex}/${project.numberOfProjects}`
       : '';
 
     return (
