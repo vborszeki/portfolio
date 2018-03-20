@@ -22,6 +22,12 @@ class Project extends Component {
     this.fetchProject(nextProps.projectTitle);
   }
 
+  componentDidUpdate(nextProps) {
+    if (this.props.projectTitle !== nextProps.projectTitle) {
+      this.setState({ indexOfPhoto: 0 });
+    }
+  }
+
   fetchProject(title) {
     fetch(
       `https://www.benetamas.com/api/category/${
