@@ -71,5 +71,5 @@
   padding-left: 21px;
   align-self: center;
   display: block;
-  width: calc(100% - 21px);
+  width: max-content;
 }

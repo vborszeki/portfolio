@@ -15,14 +15,18 @@ class Project extends Component {
   }
 
   componentDidMount() {
-    this.fetchProject();
+    this.fetchProject(this.props.projectTitle);
   }
 
-  fetchProject() {
+  componentWillReceiveProps(nextProps) {
+    this.fetchProject(nextProps.projectTitle);
+  }
+
+  fetchProject(title) {
     fetch(
-      `https://www.benetamas.com/api/category/${this.props.category}/project/${
-        this.props.projectTitle
-      }?lang=${this.props.language}`
+      `https://www.benetamas.com/api/category/${
+        this.props.category
+      }/project/${title}?lang=${this.props.language}`
     )
       .then(res => res.json())
       .then(project => this.setState({ project }))
@@ -61,7 +65,9 @@ class Project extends Component {
 
   render() {
     const { project, indexOfPhoto, expandDescription } = this.state;
-    const counter = `1/${project.numberOfProjects}`;
+    const counter = project.numberOfProjects
+      ? `1/${project.numberOfProjects}`
+      : '';
 
     return (
       <Wrapper>
@@ -137,7 +143,12 @@ class Project extends Component {
                   {this.props.category === 'architecture' && (
                     <ContainerDimensions>
                       {({ height }) => (
-                        <ProjectPager counter={counter} height={height} />
+                        <ProjectPager
+                          counter={counter}
+                          height={height}
+                          project={project}
+                          category={this.props.category}
+                        />
                       )}
                     </ContainerDimensions>
                   )}
@@ -147,7 +158,12 @@ class Project extends Component {
                   {this.props.category === 'installation' && (
                     <ContainerDimensions>
                       {({ height }) => (
-                        <ProjectPager counter="" height={height} />
+                        <ProjectPager
+                          counter={counter}
+                          height={height}
+                          project={project}
+                          category={this.props.category}
+                        />
                       )}
                     </ContainerDimensions>
                   )}
@@ -157,7 +173,12 @@ class Project extends Component {
                   {this.props.category === 'object' && (
                     <ContainerDimensions>
                       {({ height }) => (
-                        <ProjectPager counter="" height={height} />
+                        <ProjectPager
+                          counter={counter}
+                          height={height}
+                          project={project}
+                          category={this.props.category}
+                        />
                       )}
                     </ContainerDimensions>
                   )}
@@ -167,7 +188,12 @@ class Project extends Component {
                   {this.props.category === 'experiment' && (
                     <ContainerDimensions>
                       {({ height }) => (
-                        <ProjectPager counter="" height={height} />
+                        <ProjectPager
+                          counter={counter}
+                          height={height}
+                          project={project}
+                          category={this.props.category}
+                        />
                       )}
                     </ContainerDimensions>
                   )}
