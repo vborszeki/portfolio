@@ -40,11 +40,16 @@ class Works extends Component {
   }
 
   handleProjectMouseOver(e) {
-    this.setState({
-      friendlyUrlTitle: this.state.projects.find(
-        project => project.id === e.target.parentNode.value
-      ).friendlyUrlTitle
-    });
+    const projectId =
+      e.target.tagName.toLowerCase() === 'a'
+        ? e.target.parentNode.value
+        : e.target.parentNode.parentNode.value;
+
+    const friendlyUrlTitle = this.state.projects.find(
+      project => project.id === projectId
+    ).friendlyUrlTitle;
+
+    this.setState({ friendlyUrlTitle });
   }
 
   handleProjectMouseOut() {
@@ -56,7 +61,7 @@ class Works extends Component {
   }
 
   render() {
-    const { projects } = this.state;
+    const { projects, friendlyUrlTitle } = this.state;
 
     return (
       <Wrapper>
@@ -65,18 +70,20 @@ class Works extends Component {
             <ul className="works-photos">
               {projects.map(e => (
                 <li key={e.id} value={e.id}>
-                  <img
-                    src={e.photo.photoUrl}
-                    alt=""
-                    onMouseOver={e => this.handleProjectMouseOver(e)}
-                    onMouseOut={() => this.handleProjectMouseOut()}
-                    className={
-                      this.state.friendlyUrlTitle !== '' &&
-                      e.friendlyUrlTitle !== this.state.friendlyUrlTitle
-                        ? 'hide-project-image'
-                        : null
-                    }
-                  />
+                  <Link to={`/${this.props.category}/${friendlyUrlTitle}`}>
+                    <img
+                      src={e.photo.photoUrl}
+                      alt=""
+                      onMouseOver={e => this.handleProjectMouseOver(e)}
+                      onMouseOut={() => this.handleProjectMouseOut()}
+                      className={
+                        friendlyUrlTitle !== '' &&
+                        e.friendlyUrlTitle !== friendlyUrlTitle
+                          ? 'hide-project-image'
+                          : null
+                      }
+                    />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -86,21 +93,19 @@ class Works extends Component {
                   <li
                     key={e.id}
                     value={e.id}
-                    onMouseOver={e => this.handleProjectMouseOver(e)}
-                    onMouseOut={() => this.handleProjectMouseOut()}
                     onFocus={e => this.handleProjectMouseOver(e)}
                     onBlur={() => this.handleProjectMouseOut()}
                     className={
-                      this.state.friendlyUrlTitle !== '' &&
-                      e.friendlyUrlTitle !== this.state.friendlyUrlTitle
+                      friendlyUrlTitle !== '' &&
+                      e.friendlyUrlTitle !== friendlyUrlTitle
                         ? 'hide-project-title'
                         : null
                     }
                   >
                     <Link
-                      to={`/${this.props.category}/${
-                        this.state.friendlyUrlTitle
-                      }`}
+                      to={`/${this.props.category}/${friendlyUrlTitle}`}
+                      onMouseOver={e => this.handleProjectMouseOver(e)}
+                      onMouseOut={() => this.handleProjectMouseOut()}
                     >
                       {e.title}
                     </Link>

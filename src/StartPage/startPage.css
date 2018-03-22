@@ -54,6 +54,7 @@
 .navigation li {
   align-self: center;
   list-style: none;
+  padding-left: 21px;
 }
 
 .navigation li:nth-child(1) {
@@ -68,7 +69,6 @@
   font-size: 1rem;
   color: #000;
   text-decoration: none;
-  padding-left: 21px;
   align-self: center;
   display: block;
   width: max-content;
