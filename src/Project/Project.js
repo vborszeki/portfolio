@@ -43,7 +43,7 @@ class Project extends Component {
   }
 
   fetchProjectTitles() {
-    fetch('http://benetamas.com/api/first')
+    fetch('https://benetamas.com/api/first')
       .then(res => res.json())
       .then(json =>
         this.setState({
