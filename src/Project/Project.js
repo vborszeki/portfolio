@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ContainerDimensions from 'react-container-dimensions';
 import Wrapper from '../Wrapper/Wrapper';
 import ProjectPager from './ProjectPager';
@@ -9,6 +10,7 @@ class Project extends Component {
     super();
     this.state = {
       project: { photos: [{ photoUrl: '' }] },
+      projectTitles: {},
       indexOfPhoto: 0,
       expandDescription: false
     };
@@ -16,10 +18,11 @@ class Project extends Component {
 
   componentDidMount() {
     this.fetchProject(this.props.projectTitle);
+    this.fetchProjectTitles();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.fetchProject(nextProps.projectTitle);
+    this.fetchProject(nextProps.projectTitle, nextProps.category);
   }
 
   componentDidUpdate(nextProps) {
@@ -28,15 +31,44 @@ class Project extends Component {
     }
   }
 
-  fetchProject(title) {
+  fetchProject(title, category = this.props.category) {
     fetch(
-      `https://www.benetamas.com/api/category/${
-        this.props.category
-      }/project/${title}?lang=${this.props.language}`
+      `https://www.benetamas.com/api/category/${category}/project/${title}?lang=${
+        this.props.language
+      }`
     )
       .then(res => res.json())
       .then(project => this.setState({ project }))
       .catch(console.error);
+  }
+
+  fetchProjectTitles() {
+    fetch('http://benetamas.com/api/first')
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          projectTitles: {
+            architecture:
+              this.getFirstProjectOfCategory(json.projects, 'architecture') ||
+              'project',
+            installation:
+              this.getFirstProjectOfCategory(json.projects, 'installation') ||
+              'project',
+            object:
+              this.getFirstProjectOfCategory(json.projects, 'object') ||
+              'project',
+            experiment:
+              this.getFirstProjectOfCategory(json.projects, 'experiment') ||
+              'project'
+          }
+        })
+      )
+      .catch(console.error);
+  }
+
+  getFirstProjectOfCategory(projects, category) {
+    return projects.find(project => project.categoryName === category).project
+      .friendlyUrlTitle;
   }
 
   async handleLanguageClick() {
@@ -70,10 +102,38 @@ class Project extends Component {
   }
 
   render() {
-    const { project, indexOfPhoto, expandDescription } = this.state;
+    const {
+      project,
+      indexOfPhoto,
+      expandDescription,
+      projectTitles
+    } = this.state;
+
     const counter = project.projectIndex
       ? `${project.projectIndex}/${project.numberOfProjects}`
       : '';
+
+    const categories = ['architecture', 'installation', 'object', 'experiment'];
+
+    const renderClickableCategory = categoryName => (
+      <li className={categoryName} key={categoryName}>
+        <Link to={`/${categoryName}/${projectTitles[categoryName]}`}>
+          {categoryName.toUpperCase()}
+        </Link>
+        {this.props.category === categoryName && (
+          <ContainerDimensions>
+            {({ height }) => (
+              <ProjectPager
+                counter={counter}
+                height={height}
+                project={project}
+                category={this.props.category}
+              />
+            )}
+          </ContainerDimensions>
+        )}
+      </li>
+    );
 
     return (
       <Wrapper>
@@ -82,14 +142,15 @@ class Project extends Component {
             <div className="project-photos">
               <img
                 src={
-                  project.photos.length > 0
+                  project.photos && project.photos.length > 0
                     ? project.photos[indexOfPhoto].photoUrl
                     : ''
                 }
                 alt=""
               />
               <div className="project-photos__preloaded">
-                {project.photos.length > 1 &&
+                {project.photos &&
+                  project.photos.length > 1 &&
                   this.getImagesToPreload().map(image => (
                     <img key={image.photoUrl} src={image.photoUrl} alt="" />
                   ))}
@@ -144,66 +205,7 @@ class Project extends Component {
                   display: expandDescription ? 'none' : 'grid'
                 }}
               >
-                <li className="architecture">
-                  ARCHITECTURE
-                  {this.props.category === 'architecture' && (
-                    <ContainerDimensions>
-                      {({ height }) => (
-                        <ProjectPager
-                          counter={counter}
-                          height={height}
-                          project={project}
-                          category={this.props.category}
-                        />
-                      )}
-                    </ContainerDimensions>
-                  )}
-                </li>
-                <li className="installation">
-                  INSTALLATION
-                  {this.props.category === 'installation' && (
-                    <ContainerDimensions>
-                      {({ height }) => (
-                        <ProjectPager
-                          counter={counter}
-                          height={height}
-                          project={project}
-                          category={this.props.category}
-                        />
-                      )}
-                    </ContainerDimensions>
-                  )}
-                </li>
-                <li className="object">
-                  OBJECT
-                  {this.props.category === 'object' && (
-                    <ContainerDimensions>
-                      {({ height }) => (
-                        <ProjectPager
-                          counter={counter}
-                          height={height}
-                          project={project}
-                          category={this.props.category}
-                        />
-                      )}
-                    </ContainerDimensions>
-                  )}
-                </li>
-                <li className="experiment">
-                  EXPERIMENT
-                  {this.props.category === 'experiment' && (
-                    <ContainerDimensions>
-                      {({ height }) => (
-                        <ProjectPager
-                          counter={counter}
-                          height={height}
-                          project={project}
-                          category={this.props.category}
-                        />
-                      )}
-                    </ContainerDimensions>
-                  )}
-                </li>
+                {categories.map(category => renderClickableCategory(category))}
               </ul>
             </div>
           </div>

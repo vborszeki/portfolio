@@ -53,6 +53,10 @@
   grid-gap: 1px;
 }
 
+.project-category-list a {
+  text-decoration: none;
+}
+
 .project-category-list li {
   height: 100%;
   font-size: 1rem;
@@ -61,6 +65,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: #000;
 }
 
 .project-category-list li a {
