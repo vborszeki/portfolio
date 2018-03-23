@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
 import Bio from '../Bio/Bio';
 import Works from '../Works/Works';
 import Project from '../Project/Project';
+import StartPageMobile from '../StartPageMobile/StartPageMobile';
 
 class App extends Component {
   constructor() {
@@ -37,11 +38,12 @@ class App extends Component {
 
     if (isMobile) {
       return (
-        <h1>
-          <span role="img" aria-label="mobile phone">
-            📱
-          </span>
-        </h1>
+        <Router>
+          <Fragment>
+            <Route exact path="/" render={() => <StartPageMobile />} />
+            <Route exact path="/*" render={() => <StartPageMobile />} />
+          </Fragment>
+        </Router>
       );
     } else {
       return (
@@ -75,6 +77,7 @@ class App extends Component {
                 />
               )}
             />
+            <Route exact path="/*" render={() => <StartPage />} />
           </Switch>
         </Router>
       );

@@ -12,7 +12,7 @@ const Bio = props => (
             <a href="https://benetamas.com">VIZTORONY.HU</a>
           </li>
           <li>
-            <a href="https://benetamas.com">PALMA.STUDIO.HU</a>
+            <a href="https://benetamas.com">PALMA.STUDIO</a>
           </li>
           <li>
             <a href="https://benetamas.com">STUDIO.B.HU</a>
