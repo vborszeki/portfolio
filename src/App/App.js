@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
 import Bio from '../Bio/Bio';
@@ -39,10 +39,10 @@ class App extends Component {
     if (isMobile) {
       return (
         <Router>
-          <Fragment>
+          <Switch>
             <Route exact path="/" render={() => <StartPageMobile />} />
             <Route exact path="/*" render={() => <StartPageMobile />} />
-          </Fragment>
+          </Switch>
         </Router>
       );
     } else {
