@@ -20,12 +20,22 @@
   background-color: #fff;
   display: flex;
   align-items: center;
-  padding-left: 21px;
 }
 
 .start-page-mobile a {
   text-decoration: none;
   color: #000;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.start-page-mobile a,
+.start-page-mobile__title,
+.start-page-mobile__address,
+.start-page-mobile__phone {
+  padding-left: 21px;
 }
 
 .start-page-mobile__category,

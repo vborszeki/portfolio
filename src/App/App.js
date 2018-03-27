@@ -5,6 +5,7 @@ import Bio from '../Bio/Bio';
 import Works from '../Works/Works';
 import Project from '../Project/Project';
 import StartPageMobile from '../StartPageMobile/StartPageMobile';
+import ProjectMobile from '../ProjectMobile/ProjectMobile';
 
 class App extends Component {
   constructor() {
@@ -41,6 +42,18 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <StartPageMobile />} />
+            <Route
+              exact
+              path="/:category/:projectTitle"
+              render={({ match }) => (
+                <ProjectMobile
+                  category={match.params.category}
+                  projectTitle={match.params.projectTitle}
+                  toggleLanguage={() => this.toggleLanguage()}
+                  language={this.state.language}
+                />
+              )}
+            />
             <Route exact path="/*" render={() => <StartPageMobile />} />
           </Switch>
         </Router>

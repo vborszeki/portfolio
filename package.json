@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://bntms.github.io/portfolio",
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.1.0",
     "jest-fetch-mock": "^1.4.2"
   },

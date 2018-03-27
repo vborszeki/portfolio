@@ -9,13 +9,13 @@ const Bio = props => (
         <ul className="contact">
           <li className="contact-title">LINKS</li>
           <li>
-            <a href="https://benetamas.com">VIZTORONY.HU</a>
+            <a href="http://viztorony.io">VIZTORONY.IO</a>
           </li>
           <li>
-            <a href="https://benetamas.com">PALMA.STUDIO</a>
+            <a href="http://palma.studio.hu">PALMA.STUDIO.HU</a>
           </li>
           <li>
-            <a href="https://benetamas.com">STUDIO.B.HU</a>
+            <a href="http://studiob.mome.hu">STUDIOB.MOME.HU</a>
           </li>
           <li className="contact-title">CONTACT</li>
           <li>0036706338750</li>

@@ -73,7 +73,7 @@ class Project extends Component {
 
   async handleLanguageClick() {
     await this.props.toggleLanguage();
-    this.fetchProject();
+    this.fetchProject(this.props.projectTitle);
   }
 
   handleDescriptionClick() {
@@ -109,11 +109,11 @@ class Project extends Component {
       projectTitles
     } = this.state;
 
+    const categories = ['architecture', 'installation', 'object', 'experiment'];
+
     const counter = project.projectIndex
       ? `${project.projectIndex}/${project.numberOfProjects}`
       : '';
-
-    const categories = ['architecture', 'installation', 'object', 'experiment'];
 
     const renderClickableCategory = categoryName => (
       <li className={categoryName} key={categoryName}>
