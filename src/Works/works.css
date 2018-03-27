@@ -97,6 +97,10 @@
   padding-left: 21px;
 }
 
+.works-category-list svg {
+  pointer-events: none;
+}
+
 .works-project-list li {
   font-size: 0.4rem;
   width: max-content;
