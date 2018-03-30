@@ -12,6 +12,7 @@ class Works extends Component {
     super();
     this.state = {
       hoveredCategory: '',
+      hoveredElement: '',
       friendlyUrlTitle: '',
       projects: projectsPlaceholder
     };
@@ -40,8 +41,9 @@ class Works extends Component {
   }
 
   handleProjectMouseOver(e) {
+    const element = e.target.tagName.toLowerCase();
     const projectId =
-      e.target.tagName.toLowerCase() === 'a'
+      element === 'a'
         ? e.target.parentNode.value
         : e.target.parentNode.parentNode.value;
 
@@ -49,11 +51,11 @@ class Works extends Component {
       project => project.id === projectId
     ).friendlyUrlTitle;
 
-    this.setState({ friendlyUrlTitle });
+    this.setState({ friendlyUrlTitle, hoveredElement: element });
   }
 
   handleProjectMouseOut() {
-    this.setState({ friendlyUrlTitle: '' });
+    this.setState({ friendlyUrlTitle: '' , hoveredElement: ''});
   }
 
   handleCategoryClick() {
@@ -61,7 +63,7 @@ class Works extends Component {
   }
 
   render() {
-    const { projects, friendlyUrlTitle } = this.state;
+    const { projects, friendlyUrlTitle, hoveredElement } = this.state;
 
     return (
       <Wrapper>
@@ -77,7 +79,7 @@ class Works extends Component {
                       onMouseOver={e => this.handleProjectMouseOver(e)}
                       onMouseOut={() => this.handleProjectMouseOut()}
                       className={
-                        friendlyUrlTitle !== '' &&
+                        hoveredElement === 'a' &&
                         e.friendlyUrlTitle !== friendlyUrlTitle
                           ? 'hide-project-image'
                           : null
@@ -96,7 +98,7 @@ class Works extends Component {
                     onFocus={e => this.handleProjectMouseOver(e)}
                     onBlur={() => this.handleProjectMouseOut()}
                     className={
-                      friendlyUrlTitle !== '' &&
+                      hoveredElement === 'img' &&
                       e.friendlyUrlTitle !== friendlyUrlTitle
                         ? 'hide-project-title'
                         : null
