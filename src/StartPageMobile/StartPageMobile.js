@@ -66,7 +66,9 @@ class StartPageMobile extends Component {
         <li>
           <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
         </li>
-        <li className="start-page-mobile__address">1111 BUDAPEST VASARHELYI PAL U. 10.</li>
+        <li className="start-page-mobile__address">
+          1114 BUDAPEST VASARHELYI PAL U. 10.
+        </li>
         <li className="start-page-mobile__title">LINKS</li>
         <li>
           <a href="http://viztorony.io">VIZTORONY.IO</a>

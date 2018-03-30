@@ -86,17 +86,17 @@
 }
 
 .project-subtitle {
-  font-size: 0.3rem;
+  font-size: 0.4rem;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .project-title p {
-  font-weight: bold;
   margin: 0;
 }
 
 .photo-counter {
   padding-right: 21px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .project-text {
@@ -114,7 +114,6 @@
   padding-left: 21px;
   font-size: 0.4rem;
   cursor: pointer;
-  font-weight: bold;
   display: flex;
   align-items: center;
   width: 25%;
