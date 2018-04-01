@@ -71,13 +71,31 @@ class StartPageMobile extends Component {
         </li>
         <li className="start-page-mobile__title">LINKS</li>
         <li>
-          <a href="http://viztorony.io">VIZTORONY.IO</a>
+          <a
+            href="http://viztorony.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            VIZTORONY.IO
+          </a>
         </li>
         <li>
-          <a href="http://palma.studio.hu">PALMA.STUDIO.HU</a>
+          <a
+            href="http://palma.studio.hu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PALMA.STUDIO.HU
+          </a>
         </li>
         <li>
-          <a href="http://studiob.mome.hu">STUDIOB.MOME.HU</a>
+          <a
+            href="http://studiob.mome.hu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            STUDIOB.MOME.HU
+          </a>
         </li>
         <li className="start-page-mobile__title">BENETAMAS</li>
       </ul>
