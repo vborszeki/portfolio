@@ -55,7 +55,7 @@ class Works extends Component {
   }
 
   handleProjectMouseOut() {
-    this.setState({ friendlyUrlTitle: '' , hoveredElement: ''});
+    this.setState({ friendlyUrlTitle: '', hoveredElement: '' });
   }
 
   handleCategoryClick() {
@@ -70,17 +70,17 @@ class Works extends Component {
         <div className="works-container">
           <div className="works-content">
             <ul className="works-photos">
-              {projects.map(e => (
-                <li key={e.id} value={e.id}>
+              {projects.map(project => (
+                <li key={project.id} value={project.id}>
                   <Link to={`/${this.props.category}/${friendlyUrlTitle}`}>
                     <img
-                      src={e.photo.photoUrl}
+                      src={project.photo.photoUrl}
                       alt=""
                       onMouseOver={e => this.handleProjectMouseOver(e)}
                       onMouseOut={() => this.handleProjectMouseOut()}
                       className={
                         hoveredElement === 'a' &&
-                        e.friendlyUrlTitle !== friendlyUrlTitle
+                        project.friendlyUrlTitle !== friendlyUrlTitle
                           ? 'hide-project-image'
                           : null
                       }
@@ -91,28 +91,30 @@ class Works extends Component {
             </ul>
             <div className="works-list">
               <ul className="works-project-list">
-                {projects.filter(e => e.photo.photoUrl !== '').map(e => (
-                  <li
-                    key={e.id}
-                    value={e.id}
-                    onFocus={e => this.handleProjectMouseOver(e)}
-                    onBlur={() => this.handleProjectMouseOut()}
-                    className={
-                      hoveredElement === 'img' &&
-                      e.friendlyUrlTitle !== friendlyUrlTitle
-                        ? 'hide-project-title'
-                        : null
-                    }
-                  >
-                    <Link
-                      to={`/${this.props.category}/${friendlyUrlTitle}`}
-                      onMouseOver={e => this.handleProjectMouseOver(e)}
-                      onMouseOut={() => this.handleProjectMouseOut()}
+                {projects
+                  .filter(project => project.photo.photoUrl !== '')
+                  .map(project => (
+                    <li
+                      key={project.id}
+                      value={project.id}
+                      onFocus={e => this.handleProjectMouseOver(e)}
+                      onBlur={() => this.handleProjectMouseOut()}
+                      className={
+                        hoveredElement === 'img' &&
+                        project.friendlyUrlTitle !== friendlyUrlTitle
+                          ? 'hide-project-title'
+                          : null
+                      }
                     >
-                      {e.title}
-                    </Link>
-                  </li>
-                ))}
+                      <Link
+                        to={`/${this.props.category}/${friendlyUrlTitle}`}
+                        onMouseOver={e => this.handleProjectMouseOver(e)}
+                        onMouseOut={() => this.handleProjectMouseOut()}
+                      >
+                        {project.title}
+                      </Link>
+                    </li>
+                  ))}
               </ul>
               <ul
                 className="works-category-list"
