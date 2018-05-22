@@ -108,6 +108,11 @@
   padding: 0 21px;
   margin-bottom: 0;
   cursor: pointer;
+  -ms-overflow-style: none;
+}
+
+.project-text::-webkit-scrollbar {
+  display: none;
 }
 
 .project-language {
