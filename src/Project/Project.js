@@ -71,30 +71,30 @@ class Project extends Component {
       .friendlyUrlTitle;
   }
 
-  async handleLanguageClick() {
+  handleLanguageClick = async () => {
     await this.props.toggleLanguage();
     this.fetchProject(this.props.projectTitle);
-  }
+  };
 
-  handleDescriptionClick() {
+  handleDescriptionClick = () => {
     this.setState(prevState => ({
       expandDescription: !prevState.expandDescription
     }));
-  }
+  };
 
-  handleNextPhotoClick() {
+  handleNextPhotoClick = () => {
     if (this.state.indexOfPhoto === this.state.project.numberOfPhotos - 1) {
       this.setState({ indexOfPhoto: -1 });
     }
     this.setState(prevState => ({ indexOfPhoto: prevState.indexOfPhoto + 1 }));
-  }
+  };
 
-  handlePrevPhotoClick() {
+  handlePrevPhotoClick = () => {
     if (this.state.indexOfPhoto === 0) {
       this.setState({ indexOfPhoto: this.state.project.numberOfPhotos });
     }
     this.setState(prevState => ({ indexOfPhoto: prevState.indexOfPhoto - 1 }));
-  }
+  };
 
   getImagesToPreload() {
     const { project, indexOfPhoto } = this.state;
@@ -155,14 +155,8 @@ class Project extends Component {
                     <img key={image.photoUrl} src={image.photoUrl} alt="" />
                   ))}
               </div>
-              <div
-                className="prev-photo"
-                onClick={() => this.handlePrevPhotoClick()}
-              />
-              <div
-                className="next-photo"
-                onClick={() => this.handleNextPhotoClick()}
-              />
+              <div className="prev-photo" onClick={this.handlePrevPhotoClick} />
+              <div className="next-photo" onClick={this.handleNextPhotoClick} />
             </div>
             <div
               className={
@@ -185,13 +179,13 @@ class Project extends Component {
                 </div>
                 <p
                   className="project-text"
-                  onClick={() => this.handleDescriptionClick()}
+                  onClick={this.handleDescriptionClick}
                 >
                   {project.description}
                 </p>
                 <p
                   className="project-language"
-                  onClick={() => this.handleLanguageClick()}
+                  onClick={this.handleLanguageClick}
                   style={{
                     display: expandDescription ? 'none' : 'grid'
                   }}

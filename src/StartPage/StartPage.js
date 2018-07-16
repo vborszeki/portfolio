@@ -23,22 +23,22 @@ class StartPage extends Component {
     this.fetchPhotos();
   }
 
-  handleClick() {
+  handleClick = () => {
     this.fetchPhotos();
-  }
+  };
 
-  fetchPhotos = () => {
+  fetchPhotos() {
     fetch('https://www.benetamas.com/api/welcome')
       .then(res => res.json())
       .then(photos => this.setState({ photos }))
       .catch(console.error);
-  };
+  }
 
   render() {
     return (
       <Wrapper>
         <div className="start-page-container">
-          <ul className="start-page-photos" onClick={() => this.handleClick()}>
+          <ul className="start-page-photos" onClick={this.handleClick}>
             {this.state.photos.map(photo => (
               <li key={photo.id}>
                 <img src={photo.photoUrl} alt="" />

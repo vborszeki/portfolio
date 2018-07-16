@@ -12,7 +12,8 @@ class App extends Component {
     super();
     this.state = {
       language: 'hu',
-      width: window.innerWidth
+      width: window.innerWidth,
+      height: window.innerHeight
     };
   }
 
@@ -25,17 +26,18 @@ class App extends Component {
   }
 
   handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   };
 
-  toggleLanguage() {
+  toggleLanguage = () => {
     const language = this.state.language === 'hu' ? 'en' : 'hu';
 
     this.setState({ language });
-  }
+  };
 
   render() {
-    const isMobile = this.state.width <= 500;
+    const { width, height } = this.state;
+    const isMobile = width <= 500 || height <= 500;
 
     if (isMobile) {
       return (
@@ -49,7 +51,7 @@ class App extends Component {
                 <ProjectMobile
                   category={match.params.category}
                   projectTitle={match.params.projectTitle}
-                  toggleLanguage={() => this.toggleLanguage()}
+                  toggleLanguage={this.toggleLanguage}
                   language={this.state.language}
                 />
               )}
@@ -68,7 +70,7 @@ class App extends Component {
               path="/bio"
               render={({ match }) => (
                 <Bio
-                  toggleLanguage={() => this.toggleLanguage()}
+                  toggleLanguage={this.toggleLanguage}
                   language={this.state.language}
                 />
               )}
@@ -85,7 +87,7 @@ class App extends Component {
                 <Project
                   category={match.params.category}
                   projectTitle={match.params.projectTitle}
-                  toggleLanguage={() => this.toggleLanguage()}
+                  toggleLanguage={this.toggleLanguage}
                   language={this.state.language}
                 />
               )}

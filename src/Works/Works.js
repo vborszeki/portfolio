@@ -31,16 +31,16 @@ class Works extends Component {
       .catch(console.error);
   }
 
-  handleCategoryMouseOver(e) {
+  handleCategoryMouseOver = e => {
     this.setState({
       hoveredCategory: e.target.innerHTML
         .toString()
         .toLowerCase()
         .split(' ')[0]
     });
-  }
+  };
 
-  handleProjectMouseOver(e) {
+  handleProjectMouseOver = e => {
     const element = e.target.tagName.toLowerCase();
     const projectId =
       element === 'a'
@@ -52,15 +52,15 @@ class Works extends Component {
     ).friendlyUrlTitle;
 
     this.setState({ friendlyUrlTitle, hoveredElement: element });
-  }
+  };
 
-  handleProjectMouseOut() {
+  handleProjectMouseOut = () => {
     this.setState({ friendlyUrlTitle: '', hoveredElement: '' });
-  }
+  };
 
-  handleCategoryClick() {
+  handleCategoryClick = () => {
     this.fetchProjectsForCategory(this.state.hoveredCategory);
-  }
+  };
 
   render() {
     const { projects, friendlyUrlTitle, hoveredElement } = this.state;
@@ -76,8 +76,8 @@ class Works extends Component {
                     <img
                       src={project.photo.photoUrl}
                       alt=""
-                      onMouseOver={e => this.handleProjectMouseOver(e)}
-                      onMouseOut={() => this.handleProjectMouseOut()}
+                      onMouseOver={this.handleProjectMouseOver}
+                      onMouseOut={this.handleProjectMouseOut}
                       className={
                         hoveredElement === 'a' &&
                         project.friendlyUrlTitle !== friendlyUrlTitle
@@ -97,8 +97,8 @@ class Works extends Component {
                     <li
                       key={project.id}
                       value={project.id}
-                      onFocus={e => this.handleProjectMouseOver(e)}
-                      onBlur={() => this.handleProjectMouseOut()}
+                      onFocus={this.handleProjectMouseOver}
+                      onBlur={this.handleProjectMouseOut}
                       className={
                         hoveredElement === 'img' &&
                         project.friendlyUrlTitle !== friendlyUrlTitle
@@ -108,8 +108,8 @@ class Works extends Component {
                     >
                       <Link
                         to={`/${this.props.category}/${friendlyUrlTitle}`}
-                        onMouseOver={e => this.handleProjectMouseOver(e)}
-                        onMouseOut={() => this.handleProjectMouseOut()}
+                        onMouseOver={this.handleProjectMouseOver}
+                        onMouseOut={this.handleProjectMouseOut}
                       >
                         {project.title}
                       </Link>
@@ -118,9 +118,9 @@ class Works extends Component {
               </ul>
               <ul
                 className="works-category-list"
-                onMouseOver={e => this.handleCategoryMouseOver(e)}
-                onFocus={e => this.handleCategoryMouseOver(e)}
-                onClick={() => this.handleCategoryClick()}
+                onMouseOver={this.handleCategoryMouseOver}
+                onFocus={this.handleCategoryMouseOver}
+                onClick={this.handleCategoryClick}
               >
                 <li className="architecture">
                   <Link to={`/${this.state.hoveredCategory}`}>
