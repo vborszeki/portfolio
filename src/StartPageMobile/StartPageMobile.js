@@ -62,7 +62,9 @@ class StartPageMobile extends Component {
           <Link to={`/experiment/${projectTitles.experiment}`}>EXPERIMENT</Link>
         </li>
         <li className="start-page-mobile__title">CONTACT</li>
-        <li className="start-page-mobile__phone">0036706338750</li>
+        <li className="start-page-mobile__phone">
+          <a href="tel:+36-70-633-8750">0036706338750</a>
+        </li>
         <li>
           <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
         </li>
