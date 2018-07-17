@@ -34,7 +34,7 @@
   background-color: #fff;
 }
 
-.works-photos a {
+.works-photo-link {
   display: flex;
   justify-content: center;
   align-items: center;
