@@ -1,6 +1,7 @@
 svg {
   display: block;
   margin-left: auto;
+  border-left: solid 1px #000;
 }
 
 .selected-x {
