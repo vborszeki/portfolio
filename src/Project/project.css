@@ -1,7 +1,7 @@
 .project-container {
   height: 100%;
   display: grid;
-  grid-template-rows: calc(100% * 8/9 - 0.5px) 1fr;
+  grid-template-rows: calc(100% * 8 / 9 - 0.5px) 1fr;
   grid-gap: 1px;
   background-color: #000;
 }
@@ -115,13 +115,15 @@
   display: none;
 }
 
+.project-language-container {
+  display: inline-flex;
+  align-items: center;
+}
+
 .project-language {
-  padding-left: 21px;
+  margin-left: 21px;
   font-size: 0.4rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  width: 25%;
 }
 
 .project-details--expanded {

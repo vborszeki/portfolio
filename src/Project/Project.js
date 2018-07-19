@@ -183,15 +183,17 @@ class Project extends Component {
                 >
                   {project.description}
                 </p>
-                <p
-                  className="project-language"
-                  onClick={this.handleLanguageClick}
-                  style={{
-                    display: expandDescription ? 'none' : 'grid'
-                  }}
-                >
-                  ENG / HU
-                </p>
+                <div className="project-language-container">
+                  <span
+                    className="project-language"
+                    onClick={this.handleLanguageClick}
+                    style={{
+                      display: expandDescription ? 'none' : 'inline-block'
+                    }}
+                  >
+                    ENG / HU
+                  </span>
+                </div>
               </div>
               <ul
                 className="project-category-list"
