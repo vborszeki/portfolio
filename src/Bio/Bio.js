@@ -40,7 +40,15 @@ const Bio = props => (
           <li>
             <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
           </li>
-          <li>1114 BUDAPEST VASARHELYI PAL U. 10</li>
+          <li>
+            <a
+              href="https://goo.gl/maps/cFDsMZAxuq72"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              1114 BUDAPEST VASARHELYI PAL U. 10
+            </a>
+          </li>
         </ul>
         <section className="bio">
           <div className="bio-title">

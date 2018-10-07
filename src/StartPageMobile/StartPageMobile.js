@@ -68,8 +68,14 @@ class StartPageMobile extends Component {
         <li>
           <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
         </li>
-        <li className="start-page-mobile__address">
-          1114 BUDAPEST VASARHELYI PAL U. 10.
+        <li>
+          <a
+            href="https://goo.gl/maps/cFDsMZAxuq72"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            1114 BUDAPEST VASARHELYI PAL U. 10
+          </a>
         </li>
         <li className="start-page-mobile__title">LINKS</li>
         <li>
