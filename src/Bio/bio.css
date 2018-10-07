@@ -1,7 +1,7 @@
 .bio-container {
   height: 100%;
   display: grid;
-  grid-template-rows: calc(100% * 8/9 - 0.5px) 1fr;
+  grid-template-rows: calc(100% * 8 / 9 - 0.5px) 1fr;
   grid-gap: 1px;
   background-color: #000;
 }
@@ -38,15 +38,25 @@
   max-height: 100%;
   font-size: 0.6rem;
   list-style: none;
-  padding-left: 21px;
   background-color: #fff;
   display: flex;
   align-items: center;
 }
 
 .contact li a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
   color: #000;
+  cursor: pointer;
+  padding-left: 21px;
+}
+
+.contact-title,
+.contact-tel {
+  padding-left: 21px;
 }
 
 .contact .contact-title {

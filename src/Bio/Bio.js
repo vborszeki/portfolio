@@ -36,7 +36,7 @@ const Bio = props => (
             </a>
           </li>
           <li className="contact-title">CONTACT</li>
-          <li>0036706338750</li>
+          <li className="contact-tel">0036706338750</li>
           <li>
             <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
           </li>
