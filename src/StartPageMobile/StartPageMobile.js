@@ -84,7 +84,7 @@ class StartPageMobile extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            VIZTORONY.IO
+            VIZTORONY
           </a>
         </li>
         <li>
@@ -93,7 +93,7 @@ class StartPageMobile extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            PALMA.STUDIO.HU
+            PALMA
           </a>
         </li>
         <li>
@@ -102,7 +102,7 @@ class StartPageMobile extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            STUDIOB.MOME.HU
+            STUDIOB
           </a>
         </li>
         <li className="start-page-mobile__title">BENETAMAS</li>

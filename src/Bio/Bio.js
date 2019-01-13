@@ -14,7 +14,7 @@ const Bio = props => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              VIZTORONY.IO
+              VIZTORONY
             </a>
           </li>
           <li>
@@ -23,7 +23,7 @@ const Bio = props => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              PALMA.STUDIO.HU
+              PALMA
             </a>
           </li>
           <li>
@@ -32,7 +32,7 @@ const Bio = props => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              STUDIOB.MOME.HU
+              STUDIOB
             </a>
           </li>
           <li className="contact-title">CONTACT</li>
