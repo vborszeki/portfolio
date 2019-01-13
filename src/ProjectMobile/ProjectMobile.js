@@ -58,7 +58,11 @@ class ProjectMobile extends Component {
     }));
   };
 
+  isZoomed = () => window.screen.width !== window.innerWidth;
+
   swipeLeft = () => {
+    if (this.isZoomed()) return;
+
     const category = this.props.match.params.category;
     const projectName = this.state.project.nextProject;
 
@@ -66,6 +70,8 @@ class ProjectMobile extends Component {
   };
 
   swipeRight = () => {
+    if (this.isZoomed()) return;
+
     const category = this.props.match.params.category;
     const projectName = this.state.project.previousProject;
 
