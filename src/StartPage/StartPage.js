@@ -3,8 +3,8 @@ import Wrapper from '../Wrapper/Wrapper';
 import './startPage.css';
 
 class StartPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       photos: [
         { id: 100000001 },

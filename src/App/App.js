@@ -8,8 +8,8 @@ import StartPageMobile from '../StartPageMobile/StartPageMobile';
 import ProjectMobile from '../ProjectMobile/ProjectMobile';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       language: 'hu',
       width: window.innerWidth,

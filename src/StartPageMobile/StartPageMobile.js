@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './startPageMobile.css';
 
 class StartPageMobile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       projectTitles: {}
     };

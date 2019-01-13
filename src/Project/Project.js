@@ -6,8 +6,8 @@ import ProjectPager from './ProjectPager';
 import './project.css';
 
 class Project extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       project: { photos: [{ photoUrl: '' }] },
       projectTitles: {},
@@ -34,7 +34,7 @@ class Project extends Component {
   fetchProject(title, category = this.props.category) {
     fetch(
       `https://www.benetamas.com/api/category/${category}/project/${title}?lang=${
-        this.props.language
+      this.props.language
       }`
     )
       .then(res => res.json())

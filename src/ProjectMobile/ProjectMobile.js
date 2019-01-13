@@ -6,8 +6,8 @@ import ProjectMobilePager from './ProjectMobilePager';
 import './projectMobile.css';
 
 class ProjectMobile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       project: { photos: [{ photoUrl: '' }] },
       indexOfPhoto: 0,

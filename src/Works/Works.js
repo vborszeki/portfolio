@@ -8,8 +8,8 @@ import { placeProjectsInGrid } from './utils';
 import './works.css';
 
 class Works extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hoveredCategory: '',
       hoveredElement: '',
@@ -94,7 +94,7 @@ class Works extends Component {
                       alt=""
                       className={
                         hoveredElement === 'works-title-link' &&
-                        project.friendlyUrlTitle !== friendlyUrlTitle
+                          project.friendlyUrlTitle !== friendlyUrlTitle
                           ? 'hide-project-image'
                           : null
                       }
@@ -115,7 +115,7 @@ class Works extends Component {
                       onBlur={this.handleProjectMouseOut}
                       className={
                         hoveredElement === 'works-photo-link' &&
-                        project.friendlyUrlTitle !== friendlyUrlTitle
+                          project.friendlyUrlTitle !== friendlyUrlTitle
                           ? 'hide-project-title'
                           : null
                       }
