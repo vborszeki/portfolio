@@ -49,7 +49,7 @@ class Works extends Component {
       projectId = e.currentTarget.parentNode.value;
       hoveredElement = 'works-title-link';
     } else if (
-      targetClassName === 'works-photo-link' &&
+      targetClassName.includes('works-photo-link') &&
       e.currentTarget.childNodes[0].getAttribute('src') !== ''
     ) {
       projectId = e.currentTarget.parentNode.value;
@@ -73,6 +73,8 @@ class Works extends Component {
     this.fetchProjectsForCategory(this.state.hoveredCategory);
   };
 
+  hasProjectThumbnail = () => this.state.hoveredElement === 'works-photo-link';
+
   render() {
     const { projects, friendlyUrlTitle, hoveredElement } = this.state;
 
@@ -85,7 +87,9 @@ class Works extends Component {
                 <li key={project.id} value={project.id}>
                   <Link
                     to={`/${this.props.category}/${friendlyUrlTitle}`}
-                    className="works-photo-link"
+                    className={`works-photo-link${
+                      this.hasProjectThumbnail() ? ' thumbnail' : ''
+                    }`}
                     onMouseOver={this.handleProjectMouseOver}
                     onMouseOut={this.handleProjectMouseOut}
                   >
@@ -94,7 +98,7 @@ class Works extends Component {
                       alt=""
                       className={
                         hoveredElement === 'works-title-link' &&
-                          project.friendlyUrlTitle !== friendlyUrlTitle
+                        project.friendlyUrlTitle !== friendlyUrlTitle
                           ? 'hide-project-image'
                           : null
                       }
@@ -115,7 +119,7 @@ class Works extends Component {
                       onBlur={this.handleProjectMouseOut}
                       className={
                         hoveredElement === 'works-photo-link' &&
-                          project.friendlyUrlTitle !== friendlyUrlTitle
+                        project.friendlyUrlTitle !== friendlyUrlTitle
                           ? 'hide-project-title'
                           : null
                       }
