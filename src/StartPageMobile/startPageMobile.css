@@ -4,29 +4,26 @@
 }
 
 .start-page-mobile {
-  min-height: 100%;
-  min-width: 100%;
-  display: grid;
-  grid-template-rows: repeat(13, 1fr);
-  grid-gap: 1px;
   list-style: none;
-  background-color: #000;
   margin: 0;
   padding: 0;
   font-size: 0.85rem;
 }
 
 .start-page-mobile li {
-  background-color: #fff;
   display: flex;
   align-items: center;
+  height: calc((100vh - 12px) / 13);
+  border-bottom: 1px solid #000;
+}
+
+.start-page-mobile li:last-child {
+  border-bottom: none;
 }
 
 .start-page-mobile a {
   text-decoration: none;
   color: #000;
-  height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
 }

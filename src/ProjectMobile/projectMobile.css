@@ -1,19 +1,17 @@
 .project-mobile {
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-rows: 1fr 3fr 8fr 1fr;
-  grid-gap: 1px;
-  background-color: #000;
 }
 
-.project-mobile--expanded {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-rows: 1fr 11fr 1fr;
-  grid-gap: 1px;
-  background-color: #000;
+.project-mobile__header {
+  height: calc((100vh - 12px) / 13);
+  border-bottom: 1px solid #000;
+}
+
+.project-mobile__footer {
+  height: calc((100vh - 12px) / 13);
+  padding-right: 21px;
+  border-top: 1px solid #000;
 }
 
 .project-mobile__header,
@@ -25,30 +23,19 @@
   padding-left: 21px;
 }
 
-.project-mobile__footer {
-  padding-right: 21px;
+.project-mobile__description {
+  height: calc((100vh - 12px) / 13 * 3 + 2px);
+  border-bottom: 1px solid #000;
 }
 
-.project-mobile__header,
-.project-mobile__footer,
-.project-mobile__description,
-.project-mobile__photo {
-  background-color: #fff;
+.project-mobile__description--expanded {
+  height: calc((100vh - 12px) / 13 * 11 + 10px);
 }
 
 .project-mobile__description,
 .project-mobile__description--expanded {
-  display: grid;
-  grid-template-rows: 1fr 2fr;
   overflow: scroll;
   padding: 0 21px;
-}
-
-.project-mobile__description--expanded {
-  display: grid;
-  grid-template-rows: 1fr 10fr;
-  overflow: scroll;
-  background-color: #fff;
 }
 
 .project-mobile__description p:nth-child(1),
@@ -64,20 +51,18 @@
 
 .project-mobile__description p:nth-child(2),
 .project-mobile__description--expanded p:nth-child(2) {
-  overflow: scroll;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem;
   text-align: justify;
-  cursor: pointer;
+  padding-bottom: 21px;
 }
 
 .project-mobile__photo {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
-  min-width: 0;
+  height: calc((100vh - 12px) / 13 * 8 + 7px);
   cursor: pointer;
 }
 
