@@ -118,25 +118,34 @@ class Project extends Component {
       ? `${project.projectIndex}/${project.numberOfProjects}`
       : '';
 
-    const renderClickableCategory = categoryName => (
-      <li className={categoryName} key={categoryName}>
-        <Link to={`/${categoryName}/${projectTitles[categoryName]}`}>
-          {categoryName.toUpperCase()}
-        </Link>
-        {this.props.category === categoryName && (
+    const renderClickableCategory = categoryName => {
+      const isSelected = this.props.category === categoryName;
+
+      return (
+        <li className={categoryName} key={categoryName}>
           <ContainerDimensions>
-            {({ height }) => (
-              <ProjectPager
-                counter={counter}
-                height={height}
-                project={project}
-                category={this.props.category}
-              />
+            {({ width, height }) => (
+              <>
+                <Link
+                  style={isSelected ? { width: width / 4 } : null}
+                  to={`/${categoryName}/${projectTitles[categoryName]}`}
+                >
+                  {categoryName.toUpperCase()}
+                </Link>
+                {isSelected && (
+                  <ProjectPager
+                    counter={counter}
+                    height={height}
+                    project={project}
+                    category={this.props.category}
+                  />
+                )}
+              </>
             )}
           </ContainerDimensions>
-        )}
-      </li>
-    );
+        </li>
+      );
+    };
 
     return (
       <Wrapper>

@@ -1,5 +1,6 @@
 .project-pager--box {
   border-left: solid 1px #000;
+  background-color: #fff;
   display: inline;
   font-size: 0.4rem;
   display: flex;
