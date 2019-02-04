@@ -34,7 +34,7 @@ class Project extends Component {
   fetchProject(title, category = this.props.category) {
     fetch(
       `https://www.benetamas.com/api/category/${category}/project/${title}?lang=${
-      this.props.language
+        this.props.language
       }`
     )
       .then(res => res.json())
@@ -67,8 +67,11 @@ class Project extends Component {
   }
 
   getFirstProjectOfCategory(projects, category) {
-    return projects.find(project => project.categoryName === category).project
-      .friendlyUrlTitle;
+    return (
+      projects.find(project => project.categoryName === category) &&
+      projects.find(project => project.categoryName === category).project
+        .friendlyUrlTitle
+    );
   }
 
   handleLanguageClick = async () => {
@@ -142,7 +145,10 @@ class Project extends Component {
             <div className="project-photos">
               <img
                 src={
-                  project.photos && project.photos.length > 0
+                  project.photos &&
+                  project.photos.length > 0 &&
+                  project.photos[indexOfPhoto] &&
+                  project.photos[indexOfPhoto].photoUrl
                     ? project.photos[indexOfPhoto].photoUrl
                     : ''
                 }

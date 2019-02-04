@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://bntms.github.io/portfolio",
   "dependencies": {
+    "nuka-carousel": "^4.4.7",
     "react": "^16.5.2",
     "react-container-dimensions": "^1.4.1",
     "react-dom": "^16.5.2",

@@ -36,8 +36,11 @@ class StartPageMobile extends Component {
   }
 
   getFirstProjectOfCategory(projects, category) {
-    return projects.find(project => project.categoryName === category).project
-      .friendlyUrlTitle;
+    return (
+      projects.find(project => project.categoryName === category) &&
+      projects.find(project => project.categoryName === category).project
+        .friendlyUrlTitle
+    );
   }
 
   render() {

@@ -7,14 +7,14 @@ class StartPage extends Component {
     super(props);
     this.state = {
       photos: [
-        { id: 100000001 },
-        { id: 100000002 },
-        { id: 100000003 },
-        { id: 100000004 },
-        { id: 100000005 },
-        { id: 100000006 },
-        { id: 100000007 },
-        { id: 100000008 }
+        { id: 100000001, photoUrl: '' },
+        { id: 100000002, photoUrl: '' },
+        { id: 100000003, photoUrl: '' },
+        { id: 100000004, photoUrl: '' },
+        { id: 100000005, photoUrl: '' },
+        { id: 100000006, photoUrl: '' },
+        { id: 100000007, photoUrl: '' },
+        { id: 100000008, photoUrl: '' }
       ]
     };
   }
@@ -27,11 +27,17 @@ class StartPage extends Component {
     this.fetchPhotos();
   };
 
-  fetchPhotos() {
-    fetch('https://www.benetamas.com/api/welcome')
-      .then(res => res.json())
-      .then(photos => this.setState({ photos }))
-      .catch(console.error);
+  async fetchPhotos() {
+    try {
+      const response = await fetch('https://www.benetamas.com/api/welcome');
+      const photos = await response.json();
+
+      if (!photos.length) return;
+
+      this.setState({ photos });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   render() {

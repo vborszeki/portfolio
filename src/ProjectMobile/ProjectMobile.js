@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Swipeable from 'react-swipeable';
+// import Carousel from 'nuka-carousel';
 import ContainerDimensions from 'react-container-dimensions';
 import ProjectMobilePager from './ProjectMobilePager';
 import './projectMobile.css';
@@ -19,25 +19,23 @@ class ProjectMobile extends Component {
     this.fetchProject();
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.match.params.projectTitle !==
-      this.props.match.params.projectTitle
-    ) {
-      this.fetchProject();
-    }
-  }
-
-  fetchProject() {
+  async fetchProject() {
     const { category, projectTitle } = this.props.match.params;
     const { language } = this.props;
 
-    fetch(
-      `https://www.benetamas.com/api/category/${category}/project/${projectTitle}?lang=${language}`
-    )
-      .then(res => res.json())
-      .then(project => this.setState({ project, indexOfPhoto: 0 }))
-      .catch(console.error);
+    try {
+      const response = await fetch(
+        `https://www.benetamas.com/api/category/${category}/project/${projectTitle}?lang=${language}`
+      );
+      const project = await response.json();
+
+      this.setState({
+        project,
+        indexOfPhoto: 0
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   handlePhotoClick = () => {
@@ -58,32 +56,53 @@ class ProjectMobile extends Component {
     }));
   };
 
-  isZoomed = () => window.screen.width !== window.innerWidth;
-
-  swipeLeft = () => {
-    if (this.isZoomed()) return;
-
-    const category = this.props.match.params.category;
-    const projectName = this.state.project.nextProject;
-
-    this.props.history.push(`/${category}/${projectName}`);
-  };
-
-  swipeRight = () => {
-    if (this.isZoomed()) return;
-
-    const category = this.props.match.params.category;
-    const projectName = this.state.project.previousProject;
-
-    this.props.history.push(`/${category}/${projectName}`);
-  };
-
   render() {
     const { project, indexOfPhoto, isDescriptionExpanded } = this.state;
     const { category } = this.props;
     const counter = project.projectIndex
       ? `${project.projectIndex}/${project.numberOfProjects}`
       : '';
+
+    const renderSwipeableProject = project => (
+      <div>
+        <section
+          className={
+            isDescriptionExpanded
+              ? 'project-mobile__description--expanded'
+              : 'project-mobile__description'
+          }
+        >
+          <p>
+            {project.title}{' '}
+            <span
+              className="project-mobile__language"
+              onClick={this.handleLanguageClick}
+            >
+              {project.description && 'ENG / HU'}
+            </span>
+          </p>
+          <p onClick={this.handleDescriptionClick}>{project.description}</p>
+        </section>
+        <div
+          className="project-mobile__photo"
+          onClick={this.handlePhotoClick}
+          style={{
+            display: isDescriptionExpanded ? 'none' : 'flex'
+          }}
+        >
+          <img
+            src={
+              project.photos &&
+              project.photos.length > 0 &&
+              project.photos[indexOfPhoto]
+                ? project.photos[indexOfPhoto].photoUrl
+                : ''
+            }
+            alt=""
+          />
+        </div>
+      </div>
+    );
 
     return (
       <div
@@ -104,42 +123,15 @@ class ProjectMobile extends Component {
             )}
           </ContainerDimensions>
         </header>
-        <section
-          className={
-            isDescriptionExpanded
-              ? 'project-mobile__description--expanded'
-              : 'project-mobile__description'
-          }
-        >
-          <p>
-            {project.title}{' '}
-            <span
-              className="project-mobile__language"
-              onClick={this.handleLanguageClick}
-            >
-              {project.description && 'ENG / HU'}
-            </span>
-          </p>
-          <p onClick={this.handleDescriptionClick}>{project.description}</p>
-        </section>
-        <Swipeable
-          className="project-mobile__photo"
-          onClick={this.handlePhotoClick}
-          onSwipingLeft={this.swipeLeft}
-          onSwipingRight={this.swipeRight}
-          style={{
-            display: isDescriptionExpanded ? 'none' : 'flex'
-          }}
-        >
-          <img
-            src={
-              project.photos && project.photos.length > 0
-                ? project.photos[indexOfPhoto].photoUrl
-                : ''
-            }
-            alt=""
-          />
-        </Swipeable>
+        {/* <Carousel
+          swiping
+          withoutControls
+          wrapAround=
+          slideIndex={1}
+          afterSlide={() => {}}
+        > */}
+        {renderSwipeableProject(this.state.project)}
+        {/* </Carousel> */}
         <footer className="project-mobile__footer">
           BENETAMAS{' '}
           {!isDescriptionExpanded && (
