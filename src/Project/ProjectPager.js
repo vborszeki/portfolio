@@ -10,7 +10,10 @@ const ProjectPager = ({ counter, height, category, project }) => (
         <div className="project-pager--box" style={{ width: height }}>
           <Link to={`/${category}/${project.previousProject}`}>PREV</Link>
         </div>
-        <div className="project-pager--box" style={{ width: height }}>
+        <div
+          className="project-pager--box project-pager--counter"
+          style={{ width: height }}
+        >
           {counter}
         </div>
         <div className="project-pager--box" style={{ width: height }}>

@@ -19,6 +19,7 @@
   margin-left: auto;
 }
 
-.project-pager:nth-child(2) {
+.project-pager--counter,
+.project-pager svg {
   cursor: default;
 }
