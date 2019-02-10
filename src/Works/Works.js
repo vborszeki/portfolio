@@ -92,7 +92,7 @@ class Works extends Component {
       const isSelected = this.props.category === categoryName;
 
       return (
-        <li className="architecture" key={categoryName}>
+        <li className={categoryName} key={categoryName}>
           <Link to={`/${categoryName}`}>
             {categoryName.toUpperCase()}
             {isSelected && (
