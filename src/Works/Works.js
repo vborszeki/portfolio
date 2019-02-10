@@ -86,6 +86,24 @@ class Works extends Component {
 
   render() {
     const { projects, friendlyUrlTitle, hoveredElement } = this.state;
+    const categories = ['architecture', 'installation', 'object', 'experiment'];
+
+    const renderClickableCategory = categoryName => {
+      const isSelected = this.props.category === categoryName;
+
+      return (
+        <li className="architecture" key={categoryName}>
+          <Link to={`/${categoryName}`}>
+            {categoryName.toUpperCase()}
+            {isSelected && (
+              <ContainerDimensions>
+                {({ height }) => <Selected height={height} />}
+              </ContainerDimensions>
+            )}
+          </Link>
+        </li>
+      );
+    };
 
     return (
       <Wrapper>
@@ -150,46 +168,7 @@ class Works extends Component {
                 onFocus={this.handleCategoryMouseOver}
                 onClick={this.handleCategoryClick}
               >
-                <li className="architecture">
-                  <Link to={`/${this.state.hoveredCategory}`}>
-                    ARCHITECTURE{' '}
-                    {this.props.category === 'architecture' && (
-                      <ContainerDimensions>
-                        {({ height }) => <Selected height={height} />}
-                      </ContainerDimensions>
-                    )}
-                  </Link>
-                </li>
-                <li className="installation">
-                  <Link to={`/${this.state.hoveredCategory}`}>
-                    INSTALLATION{' '}
-                    {this.props.category === 'installation' && (
-                      <ContainerDimensions>
-                        {({ height }) => <Selected height={height} />}
-                      </ContainerDimensions>
-                    )}
-                  </Link>
-                </li>
-                <li className="object">
-                  <Link to={`/${this.state.hoveredCategory}`}>
-                    OBJECT{' '}
-                    {this.props.category === 'object' && (
-                      <ContainerDimensions>
-                        {({ height }) => <Selected height={height} />}
-                      </ContainerDimensions>
-                    )}
-                  </Link>
-                </li>
-                <li className="experiment">
-                  <Link to={`/${this.state.hoveredCategory}`}>
-                    EXPERIMENT{' '}
-                    {this.props.category === 'experiment' && (
-                      <ContainerDimensions>
-                        {({ height }) => <Selected height={height} />}
-                      </ContainerDimensions>
-                    )}
-                  </Link>
-                </li>
+                {categories.map(category => renderClickableCategory(category))}
               </ul>
             </div>
           </div>
