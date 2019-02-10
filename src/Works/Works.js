@@ -14,7 +14,8 @@ class Works extends Component {
       hoveredCategory: '',
       hoveredElement: '',
       friendlyUrlTitle: '',
-      projects: projectsPlaceholder
+      projects: projectsPlaceholder,
+      selectedCategory: ''
     };
   }
 
@@ -29,6 +30,8 @@ class Works extends Component {
         this.setState({ projects: placeProjectsInGrid(json.projects) })
       )
       .catch(console.error);
+
+    this.setState({ selectedCategory: category });
   }
 
   handleCategoryMouseOver = e => {
@@ -70,6 +73,12 @@ class Works extends Component {
   };
 
   handleCategoryClick = () => {
+    const isSameCategory =
+      this.state.hoveredCategory === this.state.selectedCategory ||
+      this.state.hoveredCategory.includes('path');
+
+    if (isSameCategory) return;
+
     this.fetchProjectsForCategory(this.state.hoveredCategory);
   };
 
