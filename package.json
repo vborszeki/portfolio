@@ -5,11 +5,11 @@
   "homepage": "https://bntms.github.io/portfolio",
   "dependencies": {
     "nuka-carousel": "^4.4.7",
-    "react": "^16.5.2",
+    "react": "^16.8.4",
     "react-container-dimensions": "^1.4.1",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.0.4",
+    "react-scripts": "^2.1.8",
     "react-swipeable": "^4.3.0"
   },
   "devDependencies": {
