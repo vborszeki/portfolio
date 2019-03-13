@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import ContainerDimensions from 'react-container-dimensions';
+import smoothscroll from 'smoothscroll-polyfill';
 import MobileClose from './MobileClose';
 import './projectMobile.css';
 
@@ -14,6 +15,19 @@ const ProjectMobile = props => {
     },
     [props.language]
   );
+
+  useEffect(
+    () => {
+      if (!isDescriptionExpanded && window.scrollY !== 0) {
+        window.scrollTo(0, 0);
+      }
+    },
+    [isDescriptionExpanded]
+  );
+
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
 
   const fetchProject = async () => {
     const { category, projectTitle } = props.match.params;
