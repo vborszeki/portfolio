@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import ContainerDimensions from 'react-container-dimensions';
+import LazyLoad from 'react-lazyload';
 import smoothscroll from 'smoothscroll-polyfill';
 import MobileClose from './MobileClose';
 import './projectMobile.css';
@@ -81,12 +82,14 @@ const ProjectMobile = props => {
           {project.photos.map((photo, id) => (
             <ContainerDimensions key={id}>
               {({ width }) => (
-                <div
-                  className="project-mobile__photo"
-                  style={{ height: width }}
-                >
-                  <img src={photo.photoUrl} alt="" />
-                </div>
+                <LazyLoad height={width} offset={100} once>
+                  <div
+                    className="project-mobile__photo"
+                    style={{ height: width }}
+                  >
+                    <img src={photo.photoUrl} alt="" />
+                  </div>
+                </LazyLoad>
               )}
             </ContainerDimensions>
           ))}
