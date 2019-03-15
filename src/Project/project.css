@@ -105,6 +105,7 @@
   min-height: 0;
   overflow: scroll;
   text-align: justify;
+  white-space: pre-wrap;
   padding: 0 21px;
   margin-bottom: 0;
   cursor: pointer;

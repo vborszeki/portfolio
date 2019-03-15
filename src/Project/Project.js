@@ -11,20 +11,14 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
   const [expandDescription, setExpandDescription] = useState(false);
 
-  useEffect(
-    () => {
-      fetchProject(projectTitle);
-      fetchProjectTitles();
-    },
-    [category, projectTitle, language]
-  );
+  useEffect(() => {
+    fetchProject(projectTitle);
+    fetchProjectTitles();
+  }, [category, projectTitle, language]);
 
-  useEffect(
-    () => {
-      setIndexOfPhoto(0);
-    },
-    [projectTitle]
-  );
+  useEffect(() => {
+    setIndexOfPhoto(0);
+  }, [projectTitle]);
 
   const fetchProject = (title, categoryName = category) => {
     fetch(
