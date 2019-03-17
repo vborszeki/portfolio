@@ -6,13 +6,13 @@ import Bio from './Bio';
 import EmptyRow from './EmptyRow';
 import './startPageMobile.css';
 
-const StartPageMobile = props => {
+const StartPageMobile = ({ projects, isCategoryOpen, toggleCategory }) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
     const height = document.querySelector('.start-page-mobile').offsetHeight;
     setHeight(height);
-  }, [props]);
+  }, [toggleCategory]);
 
   const categories = ['architecture', 'installation', 'object', 'experiment'];
 
@@ -23,22 +23,18 @@ const StartPageMobile = props => {
           <Works
             key={category}
             category={category}
-            isOpen={
-              props[`is${category[0].toUpperCase()}${category.slice(1)}Open`]
-            }
-            toggleCategory={
-              props[`toggle${category[0].toUpperCase()}${category.slice(1)}`]
-            }
-            projects={props.projects}
+            isOpen={isCategoryOpen[category]}
+            toggleCategory={() => toggleCategory(category)}
+            projects={projects}
           />
         ))}
         <Contact
-          isContactOpen={props.isContactOpen}
-          toggleContact={props.toggleContact}
+          isOpen={isCategoryOpen['contact']}
+          toggleContact={() => toggleCategory('contact')}
         />
         <Links
-          isLinksOpen={props.isLinksOpen}
-          toggleLinks={props.toggleLinks}
+          isOpen={isCategoryOpen['links']}
+          toggleLinks={() => toggleCategory('links')}
         />
         <Bio />
       </div>

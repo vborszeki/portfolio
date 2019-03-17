@@ -3,18 +3,18 @@ import Selected from '../Selected/Selected';
 import ContainerDimensions from 'react-container-dimensions';
 import './links.css';
 
-const Links = ({ isLinksOpen, toggleLinks }) => (
+const Links = ({ isOpen, toggleLinks }) => (
   <>
     <div
       className={
-        isLinksOpen
+        isOpen
           ? 'link-mobile__title link-mobile__title--open'
           : 'link-mobile__title'
       }
-      onClick={!isLinksOpen ? toggleLinks : null}
+      onClick={!isOpen ? toggleLinks : null}
     >
       Links
-      {isLinksOpen && (
+      {isOpen && (
         <ContainerDimensions>
           {({ height }) => (
             <div className="link-mobile__close" onClick={toggleLinks}>
@@ -24,7 +24,7 @@ const Links = ({ isLinksOpen, toggleLinks }) => (
         </ContainerDimensions>
       )}
     </div>
-    {isLinksOpen && (
+    {isOpen && (
       <ul className="link-mobile__wrapper">
         <li className="link-mobile">
           <a

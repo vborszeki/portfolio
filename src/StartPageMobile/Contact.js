@@ -3,18 +3,18 @@ import Selected from '../Selected/Selected';
 import ContainerDimensions from 'react-container-dimensions';
 import './contact.css';
 
-const Contact = ({ isContactOpen, toggleContact }) => (
+const Contact = ({ isOpen, toggleContact }) => (
   <>
     <div
       className={
-        isContactOpen
+        isOpen
           ? 'contact-mobile__title contact-mobile__title--open'
           : 'contact-mobile__title'
       }
-      onClick={!isContactOpen ? toggleContact : null}
+      onClick={!isOpen ? toggleContact : null}
     >
       Contact
-      {isContactOpen && (
+      {isOpen && (
         <ContainerDimensions>
           {({ height }) => (
             <div className="contact-mobile__close" onClick={toggleContact}>
@@ -24,7 +24,7 @@ const Contact = ({ isContactOpen, toggleContact }) => (
         </ContainerDimensions>
       )}
     </div>
-    {isContactOpen && (
+    {isOpen && (
       <ul className="contact-mobile__wrapper">
         <li className="contact-mobile">
           <a href="tel:+36-70-633-8750">0036706338750</a>

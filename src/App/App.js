@@ -10,12 +10,14 @@ import useIsMobile from './useIsMobile';
 
 const App = () => {
   const [language, setLanguage] = useState('hu');
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isLinksOpen, setIsLinksOpen] = useState(false);
-  const [isArchitectureOpen, setIsArchitectureOpen] = useState(false);
-  const [isInstallationOpen, setIsInstallationOpen] = useState(false);
-  const [isObjectOpen, setIsObjectOpen] = useState(false);
-  const [isExperimentOpen, setIsExperimentOpen] = useState(false);
+  const [isCategoryOpen, setIsCategoryOpen] = useState({
+    architecture: false,
+    installation: false,
+    object: false,
+    experiment: false,
+    contact: false,
+    links: false
+  });
   const [projects, setProjects] = useState({
     architecture: [],
     installation: [],
@@ -44,32 +46,18 @@ const App = () => {
     setLanguage(lang);
   };
 
-  const toggleContact = () => {
-    setIsContactOpen(!isContactOpen);
-  };
-
-  const toggleLinks = () => {
-    setIsLinksOpen(!isLinksOpen);
-  };
-
-  const toggleArchitecture = () => {
-    setIsArchitectureOpen(!isArchitectureOpen);
-    fetchProjects('architecture');
-  };
-
-  const toggleInstallation = () => {
-    setIsInstallationOpen(!isInstallationOpen);
-    fetchProjects('installation');
-  };
-
-  const toggleObject = () => {
-    setIsObjectOpen(!isObjectOpen);
-    fetchProjects('object');
-  };
-
-  const toggleExperiment = () => {
-    setIsExperimentOpen(!isExperimentOpen);
-    fetchProjects('experiment');
+  const toggleCategory = category => {
+    setIsCategoryOpen({
+      ...isCategoryOpen,
+      [category]: !isCategoryOpen[category]
+    });
+    if (
+      ['architecture', 'installation', 'object', 'experiment'].includes(
+        category
+      )
+    ) {
+      fetchProjects(category);
+    }
   };
 
   const isMobile = useIsMobile();
@@ -94,18 +82,8 @@ const App = () => {
           path="/*"
           render={() => (
             <StartPageMobile
-              isContactOpen={isContactOpen}
-              toggleContact={toggleContact}
-              isLinksOpen={isLinksOpen}
-              toggleLinks={toggleLinks}
-              isArchitectureOpen={isArchitectureOpen}
-              toggleArchitecture={toggleArchitecture}
-              isInstallationOpen={isInstallationOpen}
-              toggleInstallation={toggleInstallation}
-              isObjectOpen={isObjectOpen}
-              toggleObject={toggleObject}
-              isExperimentOpen={isExperimentOpen}
-              toggleExperiment={toggleExperiment}
+              isCategoryOpen={isCategoryOpen}
+              toggleCategory={toggleCategory}
               projects={projects}
               setProjects={setProjects}
             />
