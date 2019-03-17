@@ -72,8 +72,8 @@ const App = () => {
             <ProjectMobile
               category={match.params.category}
               projectTitle={match.params.projectTitle}
-              toggleLanguage={toggleLanguage}
               language={language}
+              toggleLanguage={toggleLanguage}
             />
           )}
         />
@@ -86,6 +86,8 @@ const App = () => {
               toggleCategory={toggleCategory}
               projects={projects}
               setProjects={setProjects}
+              language={language}
+              toggleLanguage={toggleLanguage}
             />
           )}
         />

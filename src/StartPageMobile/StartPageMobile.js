@@ -6,7 +6,13 @@ import Bio from './Bio';
 import EmptyRow from './EmptyRow';
 import './startPageMobile.css';
 
-const StartPageMobile = ({ projects, isCategoryOpen, toggleCategory }) => {
+const StartPageMobile = ({
+  projects,
+  isCategoryOpen,
+  toggleCategory,
+  language,
+  toggleLanguage
+}) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
@@ -36,7 +42,12 @@ const StartPageMobile = ({ projects, isCategoryOpen, toggleCategory }) => {
           isOpen={isCategoryOpen['links']}
           toggleLinks={() => toggleCategory('links')}
         />
-        <Bio />
+        <Bio
+          isOpen={isCategoryOpen['bio']}
+          toggleBio={() => toggleCategory('bio')}
+          language={language}
+          toggleLanguage={toggleLanguage}
+        />
       </div>
       {height < window.innerHeight &&
         13 - height / (window.innerHeight / 13) > 0 &&

@@ -7,3 +7,26 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
+
+.bio-mobile__close {
+  margin-left: auto;
+}
+
+.bio-mobile__language {
+  height: calc((100vh - 12px) / 13);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 21px;
+}
+
+.bio-mobile__language span {
+  cursor: pointer;
+}
+
+.bio-mobile__text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  padding: 0 21px 21px;
+  margin-top: 0;
+}
