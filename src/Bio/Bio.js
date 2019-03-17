@@ -23,7 +23,7 @@ const Bio = props => {
             <li className="contact-title">LINKS</li>
             <li>
               <a
-                href="http://viztorony.io"
+                href="https://www.facebook.com/viztoronyobuda/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

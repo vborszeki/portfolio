@@ -28,7 +28,7 @@ const Links = ({ isOpen, toggleLinks }) => (
       <ul className="link-mobile__wrapper">
         <li className="link-mobile">
           <a
-            href="http://viztorony.io"
+            href="https://www.facebook.com/viztoronyobuda/"
             target="_blank"
             rel="noopener noreferrer"
           >
