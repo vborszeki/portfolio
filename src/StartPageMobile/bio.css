@@ -1,0 +1,9 @@
+.bio-mobile__title {
+  display: flex;
+  align-items: center;
+  height: calc((100vh - 12px) / 13);
+  border-bottom: 1px solid #000;
+  padding-left: 21px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}

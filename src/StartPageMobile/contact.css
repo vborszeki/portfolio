@@ -1,0 +1,40 @@
+.contact-mobile__title,
+.contact-mobile a {
+  display: flex;
+  align-items: center;
+  height: calc((100vh - 12px) / 13);
+  border-bottom: 1px solid #000;
+  padding-left: 21px;
+  text-transform: uppercase;
+}
+
+.contact-mobile__title {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.contact-mobile__title--open {
+  cursor: default;
+}
+
+.contact-mobile__close {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.contact-mobile__wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+.contact-mobile li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-mobile a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.85rem;
+}

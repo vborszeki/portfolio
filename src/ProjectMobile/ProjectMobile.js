@@ -10,21 +10,15 @@ const ProjectMobile = props => {
   const [project, setProject] = useState({ photos: [{ photoUrl: '' }] });
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
-  useEffect(
-    () => {
-      fetchProject();
-    },
-    [props.language]
-  );
+  useEffect(() => {
+    fetchProject();
+  }, [project, props.language]);
 
-  useEffect(
-    () => {
-      if (!isDescriptionExpanded && window.scrollY !== 0) {
-        window.scrollTo(0, 0);
-      }
-    },
-    [isDescriptionExpanded]
-  );
+  useEffect(() => {
+    if (!isDescriptionExpanded && window.scrollY !== 0) {
+      window.scrollTo(0, 0);
+    }
+  }, [isDescriptionExpanded]);
 
   useEffect(() => {
     smoothscroll.polyfill();

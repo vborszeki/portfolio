@@ -1,0 +1,4 @@
+.empty-row {
+  height: calc((100vh - 12px) / 13);
+  border-bottom: 1px solid #000;
+}

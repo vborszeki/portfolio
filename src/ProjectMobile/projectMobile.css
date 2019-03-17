@@ -67,4 +67,5 @@
   text-transform: uppercase;
   height: calc((100vh - 12px) / 13);
   border-top: 1px solid #000;
+  cursor: pointer;
 }

@@ -1,117 +1,54 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
+import Works from './Works';
+import Contact from './Contact';
+import Links from './Links';
+import Bio from './Bio';
+import EmptyRow from './EmptyRow';
 import './startPageMobile.css';
 
-class StartPageMobile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projectTitles: {}
-    };
-  }
+const StartPageMobile = props => {
+  const [height, setHeight] = useState(0);
 
-  componentDidMount() {
-    fetch('https://benetamas.com/api/first')
-      .then(res => res.json())
-      .then(json =>
-        this.setState({
-          projectTitles: {
-            architecture:
-              this.getFirstProjectOfCategory(json.projects, 'architecture') ||
-              'project',
-            installation:
-              this.getFirstProjectOfCategory(json.projects, 'installation') ||
-              'project',
-            object:
-              this.getFirstProjectOfCategory(json.projects, 'object') ||
-              'project',
-            experiment:
-              this.getFirstProjectOfCategory(json.projects, 'experiment') ||
-              'project'
-          }
-        })
-      )
-      .catch(console.error);
-  }
+  useEffect(() => {
+    const height = document.querySelector('.start-page-mobile').offsetHeight;
+    setHeight(height);
+  }, [props]);
 
-  getFirstProjectOfCategory(projects, category) {
-    return (
-      projects.find(project => project.categoryName === category) &&
-      projects.find(project => project.categoryName === category).project
-        .friendlyUrlTitle
-    );
-  }
+  const categories = ['architecture', 'installation', 'object', 'experiment'];
 
-  render() {
-    const { projectTitles } = this.state;
-
-    return (
-      <ul className="start-page-mobile">
-        <li className="start-page-mobile__category">
-          <Link to={`/architecture/${projectTitles.architecture}`}>
-            ARCHITECTURE
-          </Link>
-        </li>
-        <li className="start-page-mobile__category">
-          <Link to={`/installation/${projectTitles.installation}`}>
-            INSTALLATION
-          </Link>
-        </li>
-        <li className="start-page-mobile__category">
-          <Link to={`/object/${projectTitles.object}`}>OBJECT</Link>
-        </li>
-        <li className="start-page-mobile__category">
-          <Link to={`/experiment/${projectTitles.experiment}`}>EXPERIMENT</Link>
-        </li>
-        <li className="start-page-mobile__title">CONTACT</li>
-        <li className="start-page-mobile__phone">
-          <a href="tel:+36-70-633-8750">0036706338750</a>
-        </li>
-        <li>
-          <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
-        </li>
-        <li>
-          <a
-            href="https://goo.gl/maps/cFDsMZAxuq72"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            1114 BUDAPEST VASARHELYI PAL U. 10
-          </a>
-        </li>
-        <li className="start-page-mobile__title">LINKS</li>
-        <li>
-          <a
-            href="http://viztorony.io"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            VIZTORONY
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://palma.studio.hu"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            PALMA
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://studiob.mome.hu"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            STUDIOB
-          </a>
-        </li>
-        <li className="start-page-mobile__title">BENETAMAS</li>
-      </ul>
-    );
-  }
-}
+  return (
+    <>
+      <div className="start-page-mobile">
+        {categories.map(category => (
+          <Works
+            key={category}
+            category={category}
+            isOpen={
+              props[`is${category[0].toUpperCase()}${category.slice(1)}Open`]
+            }
+            toggleCategory={
+              props[`toggle${category[0].toUpperCase()}${category.slice(1)}`]
+            }
+            projects={props.projects}
+          />
+        ))}
+        <Contact
+          isContactOpen={props.isContactOpen}
+          toggleContact={props.toggleContact}
+        />
+        <Links
+          isLinksOpen={props.isLinksOpen}
+          toggleLinks={props.toggleLinks}
+        />
+        <Bio />
+      </div>
+      {height < window.innerHeight &&
+        13 - height / (window.innerHeight / 13) > 0 &&
+        [...Array(Math.ceil(13 - height / (window.innerHeight / 13)))].map(
+          (e, i) => <EmptyRow key={i} />
+        )}
+    </>
+  );
+};
 
 export default StartPageMobile;

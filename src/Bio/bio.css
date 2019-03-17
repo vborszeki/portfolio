@@ -82,9 +82,9 @@
 
 .bio-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   background-color: #fff;
-  overflow: hidden;
+  overflow: scroll;
   min-height: 0;
   text-align: justify;
   padding-right: 21px;
