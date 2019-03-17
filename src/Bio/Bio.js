@@ -110,7 +110,9 @@ const Bio = props => {
         </div>
         <nav>
           <ul className="navigation">
-            <li onClick={goBack}>BACK</li>
+            <li>
+              <span onClick={goBack}>BACK</span>
+            </li>
           </ul>
         </nav>
       </div>

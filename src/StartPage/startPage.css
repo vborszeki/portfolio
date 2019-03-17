@@ -3,7 +3,7 @@
   width: 100%;
   background-color: #000;
   display: grid;
-  grid-template-rows: calc(100% * 8/9 - 0.5px) 1fr;
+  grid-template-rows: calc(100% * 8 / 9 - 0.5px) 1fr;
   grid-row-gap: 1px;
 }
 
@@ -55,6 +55,10 @@
   align-self: center;
   list-style: none;
   padding-left: 21px;
+}
+
+.navigation li span {
+  cursor: pointer;
 }
 
 .navigation li:nth-child(1) {
