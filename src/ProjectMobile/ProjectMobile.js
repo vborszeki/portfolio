@@ -48,7 +48,7 @@ const ProjectMobile = props => {
   return (
     <main>
       <header className="project-mobile__header">
-        {props.projectTitle.toUpperCase()}
+        {project.title && project.title.toUpperCase()}
         <ContainerDimensions>
           {({ height }) => <MobileClose height={height} />}
         </ContainerDimensions>
