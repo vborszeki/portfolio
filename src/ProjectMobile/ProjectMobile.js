@@ -73,14 +73,17 @@ const ProjectMobile = props => {
           {project.photos.map((photo, id) => (
             <ContainerDimensions key={id}>
               {({ width }) => (
-                <LazyLoad height={width} offset={100} once>
-                  <div
-                    className="project-mobile__photo"
-                    style={{ height: width }}
-                  >
-                    <img src={photo.photoUrl} alt="" />
-                  </div>
-                </LazyLoad>
+                <>
+                  <LazyLoad height={width} offset={width} once>
+                    <div
+                      className="project-mobile__photo"
+                      style={{ height: width }}
+                    >
+                      <img src={photo.photoUrl} alt="" />
+                    </div>
+                  </LazyLoad>
+                  <div className="project-mobile__gutter" />
+                </>
               )}
             </ContainerDimensions>
           ))}

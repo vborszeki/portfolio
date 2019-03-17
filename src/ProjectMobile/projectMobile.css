@@ -65,6 +65,11 @@
   padding-left: 21px;
   text-transform: uppercase;
   height: calc((100vh - 12px) / 13);
+  margin-top: calc((100vh - 12px) / 13 * -1);
   border-top: 1px solid #000;
   cursor: pointer;
+}
+
+.project-mobile__gutter {
+  height: calc((100vh - 12px) / 13);
 }
