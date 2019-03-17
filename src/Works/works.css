@@ -69,6 +69,12 @@
   display: grid;
 }
 
+.works-title-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .works-project-list {
   background-color: #fff;
   grid-template-columns: repeat(2, 1fr);
