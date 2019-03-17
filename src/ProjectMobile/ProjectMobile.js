@@ -48,7 +48,7 @@ const ProjectMobile = props => {
   return (
     <main>
       <header className="project-mobile__header">
-        {props.category.toUpperCase()}
+        {props.projectTitle.toUpperCase()}
         <ContainerDimensions>
           {({ height }) => <MobileClose height={height} />}
         </ContainerDimensions>
@@ -60,15 +60,12 @@ const ProjectMobile = props => {
             : 'project-mobile__description'
         }
       >
-        <p>
-          {project.title}{' '}
-          <span
-            className="project-mobile__language"
-            onClick={props.toggleLanguage}
-          >
-            {project.description && 'ENG / HU'}
-          </span>
-        </p>
+        <div
+          className="project-mobile__language"
+          onClick={props.toggleLanguage}
+        >
+          ENG / HU
+        </div>
         <p onClick={handleDescriptionClick}>{project.description}</p>
       </section>
       {!isDescriptionExpanded && (
@@ -93,7 +90,7 @@ const ProjectMobile = props => {
               window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }}
           >
-            back
+            top
           </footer>
         </>
       )}

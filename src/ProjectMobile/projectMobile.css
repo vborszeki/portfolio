@@ -29,22 +29,21 @@
   padding: 0 21px;
 }
 
-.project-mobile__description p:nth-child(1),
-.project-mobile__description--expanded p:nth-child(1) {
-  display: flex;
-  justify-content: space-between;
-}
-
 .project-mobile__language {
+  height: calc((100vh - 12px) / 13);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
 }
 
-.project-mobile__description p:nth-child(2),
-.project-mobile__description--expanded p:nth-child(2) {
+.project-mobile__description p,
+.project-mobile__description--expanded p {
   font-family: 'Cormorant Garamond', serif;
   white-space: pre-wrap;
   font-size: 1.2rem;
   padding-bottom: 21px;
+  margin-top: 0;
 }
 
 .project-mobile__photo {
