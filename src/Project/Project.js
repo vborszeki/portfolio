@@ -189,9 +189,6 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
             <li>
               <a href="#/bio">BENETAMAS</a>
             </li>
-            <li>
-              <a href={`#/${category}`}>BACK</a>
-            </li>
           </ul>
         </nav>
       </div>

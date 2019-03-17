@@ -101,10 +101,6 @@
   padding-left: 21px;
 }
 
-.works-category-list svg {
-  pointer-events: none;
-}
-
 .works-project-list li {
   font-size: 0.4rem;
   width: max-content;
@@ -125,4 +121,8 @@
 
 .hide-project-image {
   opacity: 0;
+}
+
+.works-close {
+  margin-left: auto;
 }

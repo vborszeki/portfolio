@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { LastLocationProvider } from 'react-router-last-location';
 import StartPage from '../StartPage/StartPage';
 import Bio from '../Bio/Bio';
 import Works from '../Works/Works';
@@ -95,34 +96,36 @@ const App = () => {
     </Router>
   ) : (
     <Router>
-      <Switch>
-        <Route exact path="/" render={() => <StartPage />} />
-        <Route
-          exact
-          path="/bio"
-          render={({ match }) => (
-            <Bio toggleLanguage={toggleLanguage} language={language} />
-          )}
-        />
-        <Route
-          exact
-          path="/:category"
-          render={({ match }) => <Works category={match.params.category} />}
-        />
-        <Route
-          exact
-          path="/:category/:projectTitle"
-          render={({ match }) => (
-            <Project
-              category={match.params.category}
-              projectTitle={match.params.projectTitle}
-              toggleLanguage={toggleLanguage}
-              language={language}
-            />
-          )}
-        />
-        <Route exact path="/*" render={() => <StartPage />} />
-      </Switch>
+      <LastLocationProvider>
+        <Switch>
+          <Route exact path="/" render={() => <StartPage />} />
+          <Route
+            exact
+            path="/bio"
+            render={({ match }) => (
+              <Bio toggleLanguage={toggleLanguage} language={language} />
+            )}
+          />
+          <Route
+            exact
+            path="/:category"
+            render={({ match }) => <Works category={match.params.category} />}
+          />
+          <Route
+            exact
+            path="/:category/:projectTitle"
+            render={({ match }) => (
+              <Project
+                category={match.params.category}
+                projectTitle={match.params.projectTitle}
+                toggleLanguage={toggleLanguage}
+                language={language}
+              />
+            )}
+          />
+          <Route exact path="/*" render={() => <StartPage />} />
+        </Switch>
+      </LastLocationProvider>
     </Router>
   );
 };

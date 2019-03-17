@@ -21,7 +21,11 @@ const ProjectPager = ({ counter, height, category, project }) => (
         </div>
       </>
     )}
-    <Selected height={height} />
+    <div className="project-pager--box project-pager--close">
+      <Link to={`/${category}`}>
+        <Selected height={height} />
+      </Link>
+    </div>
   </div>
 );
 

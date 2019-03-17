@@ -19,7 +19,14 @@
   margin-left: auto;
 }
 
-.project-pager--counter,
-.project-pager svg {
+.project-pager--counter {
   cursor: default;
+}
+
+.project-pager--close {
+  border-left: none;
+}
+
+.project-pager svg {
+  cursor: pointer;
 }

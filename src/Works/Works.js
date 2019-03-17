@@ -7,7 +7,7 @@ import { projectsPlaceholder } from './projectsPlaceholder';
 import { placeProjectsInGrid } from './utils';
 import './works.css';
 
-const Works = ({ category }) => {
+const Works = ({ category, history }) => {
   const [hoveredCategory, setHoveredCategory] = useState('');
   const [hoveredElement, setHoveredElement] = useState('');
   const [friendlyUrlTitle, setFriendlyUrlTitle] = useState('');
@@ -87,7 +87,11 @@ const Works = ({ category }) => {
           {categoryName.toUpperCase()}
           {isSelected && (
             <ContainerDimensions>
-              {({ height }) => <Selected height={height} />}
+              {({ height }) => (
+                <Link to="/" className="works-close">
+                  <Selected height={height} />
+                </Link>
+              )}
             </ContainerDimensions>
           )}
         </Link>
@@ -166,9 +170,6 @@ const Works = ({ category }) => {
           <ul className="navigation">
             <li>
               <a href="#/bio">BENETAMAS</a>
-            </li>
-            <li>
-              <a href="#/">BACK</a>
             </li>
           </ul>
         </nav>

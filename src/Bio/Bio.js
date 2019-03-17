@@ -1,65 +1,78 @@
 import React from 'react';
 import Wrapper from '../Wrapper/Wrapper';
+import { withRouter } from 'react-router-dom';
+import { useLastLocation } from 'react-router-last-location';
 import './bio.css';
 
-const Bio = props => (
-  <Wrapper>
-    <div className="bio-container">
-      <div className="contact-bio">
-        <ul className="contact">
-          <li className="contact-title">LINKS</li>
-          <li>
-            <a
-              href="http://viztorony.io"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              VIZTORONY
-            </a>
-          </li>
-          <li>
-            <a
-              href="http://palma.studio.hu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              PALMA
-            </a>
-          </li>
-          <li>
-            <a
-              href="http://studiob.mome.hu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              STUDIOB
-            </a>
-          </li>
-          <li className="contact-title">CONTACT</li>
-          <li className="contact-tel">0036706338750</li>
-          <li>
-            <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
-          </li>
-          <li>
-            <a
-              href="https://goo.gl/maps/cFDsMZAxuq72"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              1114 BUDAPEST VASARHELYI PAL U. 10
-            </a>
-          </li>
-        </ul>
-        <section className="bio">
-          <div className="bio-title">
-            <p>BIO</p>
-            <span className="bio-language" onClick={props.toggleLanguage}>
-              ENG / HU
-            </span>
-          </div>
-          <p className="bio-text">
-            {props.language === 'hu'
-              ? `Lorem ipsum dolor amet next level af iceland everyday carry woke.
+const Bio = props => {
+  const lastLocation = useLastLocation();
+
+  const goBack = () => {
+    if (lastLocation) {
+      props.history.goBack();
+    } else {
+      props.history.push('/');
+    }
+  };
+
+  return (
+    <Wrapper>
+      <div className="bio-container">
+        <div className="contact-bio">
+          <ul className="contact">
+            <li className="contact-title">LINKS</li>
+            <li>
+              <a
+                href="http://viztorony.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                VIZTORONY
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://palma.studio.hu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PALMA
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://studiob.mome.hu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                STUDIOB
+              </a>
+            </li>
+            <li className="contact-title">CONTACT</li>
+            <li className="contact-tel">0036706338750</li>
+            <li>
+              <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
+            </li>
+            <li>
+              <a
+                href="https://goo.gl/maps/cFDsMZAxuq72"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                1114 BUDAPEST VASARHELYI PAL U. 10
+              </a>
+            </li>
+          </ul>
+          <section className="bio">
+            <div className="bio-title">
+              <p>BIO</p>
+              <span className="bio-language" onClick={props.toggleLanguage}>
+                ENG / HU
+              </span>
+            </div>
+            <p className="bio-text">
+              {props.language === 'hu'
+                ? `Lorem ipsum dolor amet next level af iceland everyday carry woke.
             Marfa jianbing hexagon lomo bushwick affogato. Raclette glossier
             green juice, four loko williamsburg gentrify tumeric fingerstache
             shaman. Jianbing banjo occupy twee, tumeric drinking vinegar viral
@@ -76,7 +89,7 @@ const Bio = props => (
             kogi tote bag synth flannel ethical. Paleo kombucha blog flannel
             twee portland celiac pinterest jianbing cloud bread. Kombucha cliche
             art party tacos neutra.`
-              : `Pop-up green juice marfa, XOXO vinyl banjo retro beard. Authentic
+                : `Pop-up green juice marfa, XOXO vinyl banjo retro beard. Authentic
                jean shorts palo santo, 90's church-key man bun echo park meditation
                umami hoodie kombucha nulla. 90's actually schlitz letterpress
                laboris echo park artisan palo santo trust fund la croix. Pariatur
@@ -91,22 +104,18 @@ const Bio = props => (
                flannel ipsum kale chips vaporware seitan culpa heirloom bushwick.
                Fanny pack direct trade church-key tumblr mlkshk enamel pin.
                Cronut velit shabby chic, meditation organic jean shorts culpa.`}
-          </p>
-          <div className="bio-photo" />
-        </section>
+            </p>
+            <div className="bio-photo" />
+          </section>
+        </div>
+        <nav>
+          <ul className="navigation">
+            <li onClick={goBack}>BACK</li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul className="navigation">
-          <li>
-            <a href="#/">BACK</a>
-          </li>
-          <li>
-            <a href="#/architecture">WORKS</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </Wrapper>
-);
+    </Wrapper>
+  );
+};
 
-export default Bio;
+export default withRouter(Bio);
