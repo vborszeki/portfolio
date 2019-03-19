@@ -7,33 +7,20 @@ import { projectsPlaceholder } from './projectsPlaceholder';
 import { placeProjectsInGrid } from './utils';
 import './works.css';
 
-const Works = ({ category, history }) => {
-  const [hoveredCategory, setHoveredCategory] = useState('');
+const Works = ({ category }) => {
   const [hoveredElement, setHoveredElement] = useState('');
   const [friendlyUrlTitle, setFriendlyUrlTitle] = useState('');
   const [projects, setProjects] = useState(projectsPlaceholder);
-  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
     fetchProjectsForCategory(category);
-  }, []);
+  }, [category]);
 
   const fetchProjectsForCategory = category => {
     fetch(`https://www.benetamas.com/api/category/${category}`)
       .then(res => res.json())
       .then(json => setProjects(placeProjectsInGrid(json.projects)))
       .catch(console.error);
-
-    setSelectedCategory(category);
-  };
-
-  const handleCategoryMouseOver = e => {
-    setHoveredCategory(
-      e.target.innerHTML
-        .toString()
-        .toLowerCase()
-        .split(' ')[0]
-    );
   };
 
   const handleProjectMouseOver = e => {
@@ -66,38 +53,8 @@ const Works = ({ category, history }) => {
     setHoveredElement('');
   };
 
-  const handleCategoryClick = () => {
-    const isSameCategory =
-      hoveredCategory === selectedCategory || hoveredCategory.includes('path');
-
-    if (isSameCategory) return;
-
-    fetchProjectsForCategory(hoveredCategory);
-  };
-
   const hasProjectThumbnail = () => hoveredElement === 'works-photo-link';
   const categories = ['architecture', 'installation', 'object', 'experiment'];
-
-  const renderClickableCategory = categoryName => {
-    const isSelected = category === categoryName;
-
-    return (
-      <li className={categoryName} key={categoryName}>
-        <Link to={`/${categoryName}`}>
-          {categoryName.toUpperCase()}
-          {isSelected && (
-            <ContainerDimensions>
-              {({ height }) => (
-                <Link to="/" className="works-close">
-                  <Selected height={height} />
-                </Link>
-              )}
-            </ContainerDimensions>
-          )}
-        </Link>
-      </li>
-    );
-  };
 
   return (
     <Wrapper>
@@ -156,13 +113,31 @@ const Works = ({ category, history }) => {
                   </li>
                 ))}
             </ul>
-            <ul
-              className="works-category-list"
-              onMouseOver={handleCategoryMouseOver}
-              onFocus={handleCategoryMouseOver}
-              onClick={handleCategoryClick}
-            >
-              {categories.map(category => renderClickableCategory(category))}
+            <ul className="works-category-list">
+              {categories.map(categoryName => {
+                const isSelected = category === categoryName;
+                return (
+                  <li className={categoryName} key={categoryName}>
+                    {isSelected ? (
+                      <ContainerDimensions>
+                        {({ height }) => (
+                          <div className="works-category-selected">
+                            {categoryName.toUpperCase()}
+
+                            <Link to="/" className="works-close">
+                              <Selected height={height} />
+                            </Link>
+                          </div>
+                        )}
+                      </ContainerDimensions>
+                    ) : (
+                      <Link to={`/${categoryName}`}>
+                        {categoryName.toUpperCase()}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

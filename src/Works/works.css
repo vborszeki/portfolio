@@ -129,6 +129,12 @@
   opacity: 0;
 }
 
+.works-category-selected {
+  display: flex;
+  align-items: center;
+  padding-left: 21px;
+}
+
 .works-close {
   margin-left: auto;
 }
