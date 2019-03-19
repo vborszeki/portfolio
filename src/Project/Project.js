@@ -93,19 +93,28 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
         <ContainerDimensions>
           {({ width, height }) => (
             <>
-              <Link
-                style={isSelected ? { width: width / 4 } : null}
-                to={`/${categoryName}/${projectTitles[categoryName]}`}
-              >
-                {categoryName.toUpperCase()}
-              </Link>
-              {isSelected && (
-                <ProjectPager
-                  counter={counter}
-                  height={height}
-                  project={project}
-                  category={category}
-                />
+              {isSelected ? (
+                <>
+                  <span
+                    className="project-category-selected"
+                    style={{ width: width / 4 }}
+                  >
+                    {categoryName.toUpperCase()}
+                  </span>
+                  <ProjectPager
+                    counter={counter}
+                    height={height}
+                    project={project}
+                    category={category}
+                  />
+                </>
+              ) : (
+                <Link
+                  to={`/${categoryName}/${projectTitles[categoryName]}`}
+                  className="project-category-element"
+                >
+                  {categoryName.toUpperCase()}
+                </Link>
               )}
             </>
           )}
@@ -137,6 +146,20 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                   <img key={image.photoUrl} src={image.photoUrl} alt="" />
                 ))}
             </div>
+            <div
+              className="aria-prev-photo"
+              aria-label="previous"
+              role="button"
+              tabIndex="0"
+              onKeyPress={handlePrevPhotoClick}
+            />
+            <div
+              className="aria-next-photo"
+              aria-label="next"
+              role="button"
+              tabIndex="0"
+              onKeyPress={handleNextPhotoClick}
+            />
             <div className="prev-photo" onClick={handlePrevPhotoClick} />
             <div className="next-photo" onClick={handleNextPhotoClick} />
           </div>

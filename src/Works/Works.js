@@ -28,7 +28,7 @@ const Works = ({ category }) => {
     let hoveredElement;
     let targetClassName = e.currentTarget.className;
 
-    if (targetClassName === 'works-title-link') {
+    if (targetClassName.includes('works-title-link')) {
       projectId = e.currentTarget.parentNode.value;
       hoveredElement = 'works-title-link';
     } else if (
@@ -70,6 +70,8 @@ const Works = ({ category }) => {
                   }`}
                   onMouseOver={handleProjectMouseOver}
                   onMouseOut={handleProjectMouseOut}
+                  onFocus={handleProjectMouseOver}
+                  onBlur={handleProjectMouseOut}
                 >
                   <img
                     src={project.photo.photoUrl}
@@ -93,8 +95,6 @@ const Works = ({ category }) => {
                   <li
                     key={project.id}
                     value={project.id}
-                    onFocus={handleProjectMouseOver}
-                    onBlur={handleProjectMouseOut}
                     className={
                       hoveredElement === 'works-photo-link' &&
                       project.friendlyUrlTitle !== friendlyUrlTitle
@@ -107,6 +107,8 @@ const Works = ({ category }) => {
                       className="works-title-link"
                       onMouseOver={handleProjectMouseOver}
                       onMouseOut={handleProjectMouseOut}
+                      onFocus={handleProjectMouseOver}
+                      onBlur={handleProjectMouseOut}
                     >
                       {project.title}
                     </Link>
@@ -131,7 +133,10 @@ const Works = ({ category }) => {
                         )}
                       </ContainerDimensions>
                     ) : (
-                      <Link to={`/${categoryName}`}>
+                      <Link
+                        to={`/${categoryName}`}
+                        className="works-category-element"
+                      >
                         {categoryName.toUpperCase()}
                       </Link>
                     )}

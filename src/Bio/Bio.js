@@ -2,6 +2,7 @@ import React from 'react';
 import Wrapper from '../Wrapper/Wrapper';
 import { withRouter } from 'react-router-dom';
 import { useLastLocation } from 'react-router-last-location';
+import 'focus-visible/dist/focus-visible.js';
 import './bio.css';
 
 const Bio = props => {
@@ -111,7 +112,15 @@ const Bio = props => {
         <nav>
           <ul className="navigation">
             <li>
-              <span onClick={goBack}>BACK</span>
+              <span
+                role="button"
+                tabIndex="0"
+                onClick={goBack}
+                onKeyPress={goBack}
+                className="js-focus-visible"
+              >
+                BACK
+              </span>
             </li>
           </ul>
         </nav>

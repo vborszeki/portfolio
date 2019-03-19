@@ -61,11 +61,15 @@
   height: 100%;
   font-size: 1rem;
   background-color: #fff;
-  padding-left: 21px;
   display: flex;
   align-items: center;
-  cursor: pointer;
   color: #000;
+  cursor: pointer;
+}
+
+.project-category-selected,
+.project-category-element {
+  padding-left: 21px;
 }
 
 .project-category-list li a {
@@ -155,6 +159,21 @@
 }
 
 .next-photo {
+  right: 0;
+}
+
+.aria-prev-photo,
+.aria-next-photo {
+  position: absolute;
+  height: calc(100% / 8);
+  width: calc(100% / 8);
+}
+
+.aria-prev-photo {
+  left: 0;
+}
+
+.aria-next-photo {
   right: 0;
 }
 

@@ -87,14 +87,14 @@
   grid-gap: 1px;
 }
 
-.works-category-list li {
-  cursor: pointer;
-}
-
 .works-category-list li,
 .works-project-list li {
   height: 100%;
   background-color: #fff;
+}
+
+.works-category-list li {
+  cursor: pointer;
 }
 
 .works-category-list li a {
@@ -104,6 +104,9 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+}
+
+.works-category-element {
   padding-left: 21px;
 }
 
@@ -118,7 +121,6 @@
 .works-project-list a {
   color: #000;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .hide-project-title a {
