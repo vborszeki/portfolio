@@ -25,6 +25,7 @@ const App = () => {
     object: [],
     experiment: []
   });
+  const categories = ['architecture', 'installation', 'object', 'experiment'];
 
   const fetchProjects = category => {
     fetch(`https://www.benetamas.com/api/category/${category}`)
@@ -48,17 +49,14 @@ const App = () => {
   };
 
   const toggleCategory = category => {
+    if (categories.includes(category) && !isCategoryOpen[category]) {
+      fetchProjects(category);
+    }
+
     setIsCategoryOpen({
       ...isCategoryOpen,
       [category]: !isCategoryOpen[category]
     });
-    if (
-      ['architecture', 'installation', 'object', 'experiment'].includes(
-        category
-      )
-    ) {
-      fetchProjects(category);
-    }
   };
 
   const isMobile = useIsMobile();
