@@ -12,7 +12,7 @@ const ProjectMobile = props => {
 
   useEffect(() => {
     fetchProject();
-  }, [project, props.language]);
+  }, [props.match.params.projectTitle, props.language]);
 
   useEffect(() => {
     if (!isDescriptionExpanded && window.scrollY !== 0) {
