@@ -28,6 +28,15 @@ const Links = ({ isOpen, toggleLinks }) => (
       <ul className="link-mobile__wrapper">
         <li className="link-mobile">
           <a
+            href="http://studiob.mome.hu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            StudioB
+          </a>
+        </li>
+        <li className="link-mobile">
+          <a
             href="https://www.facebook.com/viztoronyobuda/"
             target="_blank"
             rel="noopener noreferrer"
@@ -42,15 +51,6 @@ const Links = ({ isOpen, toggleLinks }) => (
             rel="noopener noreferrer"
           >
             Palma
-          </a>
-        </li>
-        <li className="link-mobile">
-          <a
-            href="http://studiob.mome.hu"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            StudioB
           </a>
         </li>
       </ul>

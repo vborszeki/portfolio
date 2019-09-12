@@ -24,6 +24,15 @@ const Bio = props => {
             <li className="contact-title">LINKS</li>
             <li>
               <a
+                href="http://studiob.mome.hu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                STUDIOB
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://www.facebook.com/viztoronyobuda/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -38,15 +47,6 @@ const Bio = props => {
                 rel="noopener noreferrer"
               >
                 PALMA
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://studiob.mome.hu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                STUDIOB
               </a>
             </li>
             <li className="contact-title">CONTACT</li>
