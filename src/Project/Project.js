@@ -109,13 +109,13 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                   />
                 </>
               ) : (
-                  <Link
-                    to={`/${categoryName}/${projectTitles[categoryName]}`}
-                    className="project-category-element"
-                  >
-                    {categoryName.toUpperCase()}
-                  </Link>
-                )}
+                <Link
+                  to={`/${categoryName}/${projectTitles[categoryName]}`}
+                  className="project-category-element"
+                >
+                  {categoryName.toUpperCase()}
+                </Link>
+              )}
             </>
           )}
         </ContainerDimensions>
@@ -131,9 +131,9 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
             <img
               src={
                 project.photos &&
-                  project.photos.length > 0 &&
-                  project.photos[indexOfPhoto] &&
-                  project.photos[indexOfPhoto].photoUrl
+                project.photos.length > 0 &&
+                project.photos[indexOfPhoto] &&
+                project.photos[indexOfPhoto].photoUrl
                   ? project.photos[indexOfPhoto].photoUrl
                   : ''
               }
@@ -176,7 +176,11 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                   <p>{project.title}</p>
                   <span className="project-subtitle">{project.subtitle}</span>
                 </div>
-                <div className="project-language" onClick={toggleLanguage}>EN / HU</div>
+                {project.title && (
+                  <div className="project-language" onClick={toggleLanguage}>
+                    {language === 'hu' ? 'EN' : 'HU'}
+                  </div>
+                )}
                 <p className="photo-counter">
                   {project.numberOfPhotos
                     ? `${indexOfPhoto + 1}/${project.numberOfPhotos}`

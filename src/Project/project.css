@@ -39,7 +39,7 @@
 
 .project-description {
   display: grid;
-  grid-template-rows: calc(100% / 4) calc(100% / 4 * 3); 
+  grid-template-rows: calc(100% / 4) calc(100% / 4 * 3);
   background-color: #fff;
   min-height: 0;
 }

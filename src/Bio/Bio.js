@@ -68,7 +68,7 @@ const Bio = props => {
             <div className="bio-title">
               <p>BIO</p>
               <span className="bio-language" onClick={props.toggleLanguage}>
-                EN / HU
+                {props.language === 'hu' ? 'EN' : 'HU'}
               </span>
             </div>
             <p className="bio-text">

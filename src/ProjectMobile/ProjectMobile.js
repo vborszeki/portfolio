@@ -29,9 +29,7 @@ const ProjectMobile = props => {
 
     try {
       const response = await fetch(
-        `https://www.benetamas.com/api/category/${category}/project/${projectTitle}?lang=${
-        props.language
-        }`
+        `https://www.benetamas.com/api/category/${category}/project/${projectTitle}?lang=${props.language}`
       );
       const project = await response.json();
 
@@ -64,7 +62,7 @@ const ProjectMobile = props => {
           className="project-mobile__language"
           onClick={props.toggleLanguage}
         >
-          EN / HU
+          {props.language === 'hu' ? 'EN' : 'HU'}
         </div>
         <p onClick={handleDescriptionClick}>{project.description}</p>
       </section>
