@@ -39,7 +39,7 @@
 
 .project-description {
   display: grid;
-  grid-template-rows: calc(100% / 4) calc(100% / 4 * 2) calc(100% / 4);
+  grid-template-rows: calc(100% / 4) calc(100% / 4 * 3); 
   background-color: #fff;
   min-height: 0;
 }
@@ -111,7 +111,6 @@
   text-align: justify;
   white-space: pre-wrap;
   padding: 0 21px;
-  margin-bottom: 0;
   cursor: pointer;
   -ms-overflow-style: none;
 }
@@ -120,13 +119,9 @@
   display: none;
 }
 
-.project-language-container {
-  display: inline-flex;
-  align-items: center;
-}
-
 .project-language {
-  margin-left: 21px;
+  margin-left: auto;
+  margin-right: 21px;
   font-size: 0.4rem;
   cursor: pointer;
 }

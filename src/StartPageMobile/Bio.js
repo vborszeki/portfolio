@@ -25,7 +25,7 @@ const Bio = ({ isOpen, toggleBio, language, toggleLanguage }) => (
     {isOpen && (
       <>
         <div className="bio-mobile__language">
-          <span onClick={toggleLanguage}>ENG / HU</span>
+          <span onClick={toggleLanguage}>EN / HU</span>
         </div>
         <p className="bio-mobile__text">
           {language === 'hu'
