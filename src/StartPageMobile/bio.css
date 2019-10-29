@@ -27,6 +27,7 @@
 .bio-mobile__text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
+  white-space: pre-wrap;
   padding: 0 21px 21px;
   margin-top: 0;
 }

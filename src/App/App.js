@@ -10,7 +10,7 @@ import ProjectMobile from '../ProjectMobile/ProjectMobile';
 import useIsMobile from './useIsMobile';
 
 const App = () => {
-  const [language, setLanguage] = useState('hu');
+  const [language, setLanguage] = useState('en');
   const [isCategoryOpen, setIsCategoryOpen] = useState({
     architecture: false,
     installation: false,
