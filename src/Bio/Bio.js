@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Wrapper from '../Wrapper/Wrapper';
 import { withRouter } from 'react-router-dom';
 import useBio from './useBio';
@@ -7,6 +7,7 @@ import 'focus-visible/dist/focus-visible.js';
 import './bio.css';
 
 const Bio = props => {
+  const [isBioExpanded, setIsBioExpanded] = useState(false);
   const bio = useBio(props.language);
   const lastLocation = useLastLocation();
 
@@ -16,6 +17,10 @@ const Bio = props => {
     } else {
       props.history.push('/');
     }
+  };
+
+  const handeBioClick = () => {
+    setIsBioExpanded(!isBioExpanded);
   };
 
   return (
@@ -66,15 +71,20 @@ const Bio = props => {
               </a>
             </li>
           </ul>
-          <section className="bio">
+          <section className={isBioExpanded ? 'bio--expanded' : 'bio'}>
             <div className="bio-title">
               <p>BIO</p>
               <span className="bio-language" onClick={props.toggleLanguage}>
                 {props.language === 'hu' ? 'EN' : 'HU'}
               </span>
             </div>
-            <p className="bio-text">{bio}</p>
-            <div className="bio-photo" />
+            <p
+              className={isBioExpanded ? 'bio-text--expanded' : 'bio-text'}
+              onClick={handeBioClick}
+            >
+              {bio}
+            </p>
+            {!isBioExpanded && <div className="bio-photo" />}
           </section>
         </div>
         <nav>
