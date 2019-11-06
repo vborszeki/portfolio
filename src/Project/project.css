@@ -110,7 +110,8 @@
   overflow: scroll;
   text-align: justify;
   white-space: pre-wrap;
-  padding: 0 21px;
+  margin: 0;
+  padding: 1em 21px;
   cursor: pointer;
   -ms-overflow-style: none;
 }
@@ -138,7 +139,6 @@
   grid-template-rows: calc(100% / 8) calc(100% / 8 * 7);
   background-color: #fff;
   min-height: 0;
-  padding-bottom: 2%;
 }
 
 .next-photo,

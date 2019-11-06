@@ -88,7 +88,8 @@
   overflow: scroll;
   min-height: 0;
   text-align: justify;
-  padding-right: 21px;
+  margin: 0;
+  padding: 1em 21px;
   -ms-overflow-style: none;
 }
 
