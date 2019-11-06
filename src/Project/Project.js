@@ -9,7 +9,7 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   const [project, setProject] = useState({ photos: [{ photoUrl: '' }] });
   const [projectTitles, setProjectTitles] = useState({});
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
-  const [expandDescription, setExpandDescription] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   useEffect(() => {
     fetchProject(projectTitle);
@@ -58,7 +58,7 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   };
 
   const handleDescriptionClick = () => {
-    setExpandDescription(!expandDescription);
+    setIsDescriptionExpanded(!isDescriptionExpanded);
   };
 
   const handleNextPhotoClick = () => {
@@ -165,7 +165,7 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
           </div>
           <div
             className={
-              expandDescription
+              isDescriptionExpanded
                 ? 'project-details--expanded'
                 : 'project-details'
             }
@@ -191,14 +191,11 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                 {project.description}
               </p>
             </div>
-            <ul
-              className="project-category-list"
-              style={{
-                display: expandDescription ? 'none' : 'grid'
-              }}
-            >
-              {categories.map(category => renderClickableCategory(category))}
-            </ul>
+            {!isDescriptionExpanded && (
+              <ul className="project-category-list">
+                {categories.map(category => renderClickableCategory(category))}
+              </ul>
+            )}
           </div>
         </div>
         <nav>
