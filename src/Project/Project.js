@@ -58,6 +58,7 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   };
 
   const handleDescriptionClick = () => {
+    if (window.getSelection().toString()) return;
     setIsDescriptionExpanded(!isDescriptionExpanded);
   };
 

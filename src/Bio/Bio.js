@@ -20,6 +20,7 @@ const Bio = props => {
   };
 
   const handeBioClick = () => {
+    if (window.getSelection().toString()) return;
     setIsBioExpanded(!isBioExpanded);
   };
 
