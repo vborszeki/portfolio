@@ -1,6 +1,7 @@
 import React from 'react';
 import Selected from '../Selected/Selected';
 import ContainerDimensions from 'react-container-dimensions';
+import { links } from '../links';
 import './contact.css';
 
 const Contact = ({ isOpen, toggleContact }) => (
@@ -27,18 +28,14 @@ const Contact = ({ isOpen, toggleContact }) => (
     {isOpen && (
       <ul className="contact-mobile__wrapper">
         <li className="contact-mobile">
-          <a href="tel:+36-70-633-8750">0036706338750</a>
+          <a href={`tel:${links.telHref}`}>{links.tel}</a>
         </li>
         <li className="contact-mobile">
-          <a href="mailto:info@benetamas.com">info@benetamas.com</a>
+          <a href={`mailto:${links.mail}`}>{links.mail}</a>
         </li>
         <li className="contact-mobile">
-          <a
-            href="https://goo.gl/maps/cFDsMZAxuq72"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            1114 Budapest Vasarhelyi Pal u. 10
+          <a href={links.maps} target="_blank" rel="noopener noreferrer">
+            {links.address}
           </a>
         </li>
       </ul>

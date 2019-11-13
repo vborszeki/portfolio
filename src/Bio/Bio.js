@@ -3,6 +3,7 @@ import Wrapper from '../Wrapper/Wrapper';
 import { withRouter } from 'react-router-dom';
 import useBio from './useBio';
 import { useLastLocation } from 'react-router-last-location';
+import { links } from '../links';
 import 'focus-visible/dist/focus-visible.js';
 import './bio.css';
 
@@ -29,54 +30,42 @@ const Bio = props => {
       <div className="bio-container">
         <div className="contact-bio">
           <ul className="contact">
-            <li className="contact-title">LINKS</li>
+            <li className="contact-title">Links</li>
             <li>
-              <a
-                href="http://studiob.mome.hu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                STUDIOB
+              <a href={links.studiob} target="_blank" rel="noopener noreferrer">
+                StudioB
               </a>
             </li>
             <li>
               <a
-                href="https://www.facebook.com/viztoronyobuda/"
+                href={links.viztorony}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                VIZTORONY
+                Viztorony
               </a>
             </li>
             <li>
-              <a
-                href="http://palma.studio.hu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PALMA
+              <a href={links.palma} target="_blank" rel="noopener noreferrer">
+                Palma
               </a>
             </li>
-            <li className="contact-title">CONTACT</li>
-            <li className="contact-tel">0036706338750</li>
+            <li className="contact-title">Contact</li>
+            <li className="contact-tel">{links.tel}</li>
             <li>
-              <a href="mailto:info@benetamas.com">INFO@BENETAMAS.COM</a>
+              <a href={`mailto:${links.mail}`}>{links.mail}</a>
             </li>
             <li>
-              <a
-                href="https://goo.gl/maps/cFDsMZAxuq72"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                1114 BUDAPEST VASARHELYI PAL U. 10
+              <a href={links.maps} target="_blank" rel="noopener noreferrer">
+                {links.address}
               </a>
             </li>
           </ul>
           <section className={isBioExpanded ? 'bio--expanded' : 'bio'}>
             <div className="bio-title">
-              <p>BIO</p>
+              <p>Bio</p>
               <span className="bio-language" onClick={props.toggleLanguage}>
-                {props.language === 'hu' ? 'EN' : 'HU'}
+                {props.language === 'hu' ? 'en' : 'hu'}
               </span>
             </div>
             <p

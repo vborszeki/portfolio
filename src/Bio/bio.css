@@ -49,6 +49,7 @@
   background-color: #fff;
   display: flex;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .contact li a {
@@ -80,6 +81,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-transform: uppercase;
 }
 
 .bio-language {
