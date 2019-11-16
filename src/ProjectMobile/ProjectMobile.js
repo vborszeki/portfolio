@@ -62,7 +62,7 @@ const ProjectMobile = props => {
           className="project-mobile__language"
           onClick={props.toggleLanguage}
         >
-          {props.language === 'hu' ? 'EN' : 'HU'}
+          {props.language === 'hu' ? 'en' : 'hu'}
         </div>
         <p onClick={handleDescriptionClick}>{project.description}</p>
       </section>
@@ -91,7 +91,7 @@ const ProjectMobile = props => {
               window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }}
           >
-            top
+            Top
           </footer>
         </>
       )}

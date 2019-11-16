@@ -43,7 +43,7 @@ const StartPage = () => {
               <a href="#/bio">BENETAMAS</a>
             </li>
             <li>
-              <a href="#/architecture">WORKS</a>
+              <a href="#/architecture">Works</a>
             </li>
           </ul>
         </nav>

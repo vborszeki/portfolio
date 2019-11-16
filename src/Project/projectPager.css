@@ -11,6 +11,7 @@
 .project-pager--box a {
   display: flex;
   justify-content: center;
+  text-transform: uppercase;
 }
 
 .project-pager {

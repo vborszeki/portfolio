@@ -124,6 +124,7 @@
   margin-left: auto;
   margin-right: 21px;
   font-size: 0.4rem;
+  text-transform: uppercase;
   cursor: pointer;
 }
 

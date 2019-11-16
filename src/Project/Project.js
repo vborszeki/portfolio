@@ -179,7 +179,7 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                 </div>
                 {project.title && (
                   <div className="project-language" onClick={toggleLanguage}>
-                    {language === 'hu' ? 'EN' : 'HU'}
+                    {language === 'hu' ? 'en' : 'hu'}
                   </div>
                 )}
                 <p className="photo-counter">

@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 21px;
+  text-transform: uppercase;
 }
 
 .bio-mobile__language span {

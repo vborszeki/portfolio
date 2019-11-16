@@ -87,7 +87,7 @@ const Bio = props => {
                 onKeyPress={goBack}
                 className="js-focus-visible"
               >
-                BACK
+                Back
               </span>
             </li>
           </ul>
