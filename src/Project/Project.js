@@ -20,33 +20,34 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
     setIndexOfPhoto(0);
   }, [projectTitle]);
 
-  const fetchProject = (title, categoryName = category) => {
-    fetch(
-      `https://www.benetamas.com/api/category/${categoryName}/project/${title}?lang=${language}`
-    )
-      .then(res => res.json())
-      .then(project => setProject(project))
-      .catch(console.error);
+  const fetchProject = async (title, categoryName = category) => {
+    try {
+      const response = await fetch(
+        `https://www.benetamas.com/api/category/${categoryName}/project/${title}?lang=${language}`
+      );
+      const project = await response.json();
+      setProject(project);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const fetchProjectTitles = () => {
-    fetch('https://benetamas.com/api/first')
-      .then(res => res.json())
-      .then(json =>
-        setProjectTitles({
-          architecture:
-            getFirstProjectOfCategory(json.projects, 'architecture') ||
-            'project',
-          installation:
-            getFirstProjectOfCategory(json.projects, 'installation') ||
-            'project',
-          object:
-            getFirstProjectOfCategory(json.projects, 'object') || 'project',
-          experiment:
-            getFirstProjectOfCategory(json.projects, 'experiment') || 'project'
-        })
-      )
-      .catch(console.error);
+  const fetchProjectTitles = async () => {
+    try {
+      const response = await fetch('https://benetamas.com/api/first');
+      const data = await response.json();
+      setProjectTitles({
+        architecture:
+          getFirstProjectOfCategory(data.projects, 'architecture') || 'project',
+        installation:
+          getFirstProjectOfCategory(data.projects, 'installation') || 'project',
+        object: getFirstProjectOfCategory(data.projects, 'object') || 'project',
+        experiment:
+          getFirstProjectOfCategory(data.projects, 'experiment') || 'project'
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getFirstProjectOfCategory = (projects, category) => {

@@ -16,11 +16,16 @@ const Works = ({ category }) => {
     fetchProjectsForCategory(category);
   }, [category]);
 
-  const fetchProjectsForCategory = category => {
-    fetch(`https://www.benetamas.com/api/category/${category}`)
-      .then(res => res.json())
-      .then(json => setProjects(placeProjectsInGrid(json.projects)))
-      .catch(console.error);
+  const fetchProjectsForCategory = async category => {
+    try {
+      const response = await fetch(
+        `https://www.benetamas.com/api/category/${category}`
+      );
+      const categoryData = await response.json();
+      setProjects(placeProjectsInGrid(categoryData.projects));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleProjectMouseOver = e => {

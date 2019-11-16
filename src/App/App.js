@@ -27,20 +27,21 @@ const App = () => {
   });
   const categories = ['architecture', 'installation', 'object', 'experiment'];
 
-  const fetchProjects = category => {
-    fetch(`https://www.benetamas.com/api/category/${category}`)
-      .then(res => res.json())
-      .then(json =>
-        json.projects.map(project => ({
-          id: project.id,
-          title: project.title,
-          friendlyUrlTitle: project.friendlyUrlTitle
-        }))
-      )
-      .then(projectData =>
-        setProjects({ ...projects, [category]: projectData })
-      )
-      .catch(console.error);
+  const fetchProjects = async category => {
+    try {
+      const response = await fetch(
+        `https://www.benetamas.com/api/category/${category}`
+      );
+      const categoryData = await response.json();
+      const projectData = categoryData.projects.map(project => ({
+        id: project.id,
+        title: project.title,
+        friendlyUrlTitle: project.friendlyUrlTitle
+      }));
+      setProjects({ ...projects, [category]: projectData });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const toggleLanguage = () => {
