@@ -6,5 +6,6 @@ export const links = {
   telHref: '+36-70-633-8750',
   mail: 'info@benetamas.com',
   address: '1114 Budapest Vasarhelyi Pal u. 10',
-  maps: 'https://goo.gl/maps/cFDsMZAxuq72'
+  maps: 'https://goo.gl/maps/cFDsMZAxuq72',
+  behance: 'https://www.behance.net/benetamas'
 };
