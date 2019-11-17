@@ -4,20 +4,20 @@ const useBio = language => {
   const [bio, setBio] = useState('');
 
   useEffect(() => {
+    const fetchBio = async () => {
+      try {
+        const response = await fetch(
+          `https://www.benetamas.com/api/bio?lang=${language}`
+        );
+        const bio = await response.json();
+        setBio(bio.description);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     fetchBio();
   }, [language]);
-
-  const fetchBio = async () => {
-    try {
-      const response = await fetch(
-        `https://www.benetamas.com/api/bio?lang=${language}`
-      );
-      const bio = await response.json();
-      setBio(bio.description);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   return bio;
 };

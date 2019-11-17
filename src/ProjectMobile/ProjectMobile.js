@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ContainerDimensions from 'react-container-dimensions';
 import LazyLoad from 'react-lazyload';
 import smoothscroll from 'smoothscroll-polyfill';
 import MobileClose from './MobileClose';
 import './projectMobile.css';
 
-const ProjectMobile = props => {
+const ProjectMobile = ({ language, toggleLanguage }) => {
   const [project, setProject] = useState({ photos: [{ photoUrl: '' }] });
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const { category, projectTitle } = useParams();
 
   useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        const response = await fetch(
+          `https://www.benetamas.com/api/category/${category}/project/${projectTitle}?lang=${language}`
+        );
+        const project = await response.json();
+
+        setProject(project);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     fetchProject();
-  }, [props.match.params.projectTitle, props.language]);
+  }, [category, projectTitle, language]);
 
   useEffect(() => {
     if (!isDescriptionExpanded && window.scrollY !== 0) {
@@ -23,21 +37,6 @@ const ProjectMobile = props => {
   useEffect(() => {
     smoothscroll.polyfill();
   }, []);
-
-  const fetchProject = async () => {
-    const { category, projectTitle } = props.match.params;
-
-    try {
-      const response = await fetch(
-        `https://www.benetamas.com/api/category/${category}/project/${projectTitle}?lang=${props.language}`
-      );
-      const project = await response.json();
-
-      setProject(project);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const handleDescriptionClick = () => {
     setIsDescriptionExpanded(!isDescriptionExpanded);
@@ -58,11 +57,8 @@ const ProjectMobile = props => {
             : 'project-mobile__description'
         }
       >
-        <div
-          className="project-mobile__language"
-          onClick={props.toggleLanguage}
-        >
-          {props.language === 'hu' ? 'en' : 'hu'}
+        <div className="project-mobile__language" onClick={toggleLanguage}>
+          {language === 'hu' ? 'en' : 'hu'}
         </div>
         <p onClick={handleDescriptionClick}>{project.description}</p>
       </section>
@@ -99,4 +95,4 @@ const ProjectMobile = props => {
   );
 };
 
-export default withRouter(ProjectMobile);
+export default ProjectMobile;

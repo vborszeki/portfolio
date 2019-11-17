@@ -12,6 +12,39 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   useEffect(() => {
+    const fetchProject = async (title, categoryName = category) => {
+      try {
+        const response = await fetch(
+          `https://www.benetamas.com/api/category/${categoryName}/project/${title}?lang=${language}`
+        );
+        const project = await response.json();
+        setProject(project);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const fetchProjectTitles = async () => {
+      try {
+        const response = await fetch('https://benetamas.com/api/first');
+        const data = await response.json();
+        setProjectTitles({
+          architecture:
+            getFirstProjectOfCategory(data.projects, 'architecture') ||
+            'project',
+          installation:
+            getFirstProjectOfCategory(data.projects, 'installation') ||
+            'project',
+          object:
+            getFirstProjectOfCategory(data.projects, 'object') || 'project',
+          experiment:
+            getFirstProjectOfCategory(data.projects, 'experiment') || 'project'
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     fetchProject(projectTitle);
     fetchProjectTitles();
   }, [category, projectTitle, language]);
@@ -19,36 +52,6 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   useEffect(() => {
     setIndexOfPhoto(0);
   }, [projectTitle]);
-
-  const fetchProject = async (title, categoryName = category) => {
-    try {
-      const response = await fetch(
-        `https://www.benetamas.com/api/category/${categoryName}/project/${title}?lang=${language}`
-      );
-      const project = await response.json();
-      setProject(project);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const fetchProjectTitles = async () => {
-    try {
-      const response = await fetch('https://benetamas.com/api/first');
-      const data = await response.json();
-      setProjectTitles({
-        architecture:
-          getFirstProjectOfCategory(data.projects, 'architecture') || 'project',
-        installation:
-          getFirstProjectOfCategory(data.projects, 'installation') || 'project',
-        object: getFirstProjectOfCategory(data.projects, 'object') || 'project',
-        experiment:
-          getFirstProjectOfCategory(data.projects, 'experiment') || 'project'
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const getFirstProjectOfCategory = (projects, category) => {
     return (
