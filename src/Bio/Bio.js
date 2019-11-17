@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import Wrapper from '../Wrapper/Wrapper';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useBio from './useBio';
 import { useLastLocation } from 'react-router-last-location';
 import { links } from '../links';
 import 'focus-visible/dist/focus-visible.js';
 import './bio.css';
 
-const Bio = props => {
+const Bio = ({ language, toggleLanguage }) => {
   const [isBioExpanded, setIsBioExpanded] = useState(false);
-  const bio = useBio(props.language);
+  const history = useHistory();
+  const bio = useBio(language);
   const lastLocation = useLastLocation();
 
   const goBack = () => {
     if (lastLocation) {
-      props.history.goBack();
+      history.goBack();
     } else {
-      props.history.push('/');
+      history.push('/');
     }
   };
 
@@ -64,8 +65,8 @@ const Bio = props => {
           <section className={isBioExpanded ? 'bio--expanded' : 'bio'}>
             <div className="bio-title">
               <p>Bio</p>
-              <span className="bio-language" onClick={props.toggleLanguage}>
-                {props.language === 'hu' ? 'en' : 'hu'}
+              <span className="bio-language" onClick={toggleLanguage}>
+                {language === 'hu' ? 'en' : 'hu'}
               </span>
             </div>
             <p
@@ -97,4 +98,4 @@ const Bio = props => {
   );
 };
 
-export default withRouter(Bio);
+export default Bio;
