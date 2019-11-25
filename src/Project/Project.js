@@ -7,7 +7,6 @@ import './project.css';
 
 const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   const [project, setProject] = useState({ photos: [{ photoUrl: '' }] });
-  const [projectTitles, setProjectTitles] = useState({});
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
@@ -24,42 +23,12 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
       }
     };
 
-    const fetchProjectTitles = async () => {
-      try {
-        const response = await fetch('https://benetamas.com/api/first');
-        const data = await response.json();
-        setProjectTitles({
-          architecture:
-            getFirstProjectOfCategory(data.projects, 'architecture') ||
-            'project',
-          installation:
-            getFirstProjectOfCategory(data.projects, 'installation') ||
-            'project',
-          object:
-            getFirstProjectOfCategory(data.projects, 'object') || 'project',
-          experiment:
-            getFirstProjectOfCategory(data.projects, 'experiment') || 'project'
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
     fetchProject(projectTitle);
-    fetchProjectTitles();
   }, [category, projectTitle, language]);
 
   useEffect(() => {
     setIndexOfPhoto(0);
   }, [projectTitle]);
-
-  const getFirstProjectOfCategory = (projects, category) => {
-    return (
-      projects.find(project => project.categoryName === category) &&
-      projects.find(project => project.categoryName === category).project
-        .friendlyUrlTitle
-    );
-  };
 
   const handleDescriptionClick = () => {
     if (window.getSelection().toString()) return;
@@ -104,7 +73,7 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                     className="project-category-selected"
                     style={{ width: width / 4 }}
                   >
-                    {categoryName.toUpperCase()}
+                    {categoryName}
                   </span>
                   <ProjectPager
                     counter={counter}
@@ -115,10 +84,10 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                 </>
               ) : (
                 <Link
-                  to={`/${categoryName}/${projectTitles[categoryName]}`}
+                  to={`/${categoryName}`}
                   className="project-category-element"
                 >
-                  {categoryName.toUpperCase()}
+                  {categoryName}
                 </Link>
               )}
             </>

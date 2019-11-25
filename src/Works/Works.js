@@ -129,8 +129,7 @@ const Works = ({ category }) => {
                       <ContainerDimensions>
                         {({ height }) => (
                           <div className="works-category-selected">
-                            {categoryName.toUpperCase()}
-
+                            {categoryName}
                             <Link to="/" className="works-close">
                               <Selected height={height} />
                             </Link>
@@ -142,7 +141,7 @@ const Works = ({ category }) => {
                         to={`/${categoryName}`}
                         className="works-category-element"
                       >
-                        {categoryName.toUpperCase()}
+                        {categoryName}
                       </Link>
                     )}
                   </li>

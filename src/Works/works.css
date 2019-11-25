@@ -93,10 +93,6 @@
   background-color: #fff;
 }
 
-.works-category-list li {
-  cursor: pointer;
-}
-
 .works-category-list li a {
   font-size: 1rem;
   height: 100%;
@@ -104,10 +100,6 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-}
-
-.works-category-element {
-  padding-left: 21px;
 }
 
 .works-project-list li {
@@ -134,7 +126,12 @@
 .works-category-selected {
   display: flex;
   align-items: center;
+}
+
+.works-category-selected,
+.works-category-element {
   padding-left: 21px;
+  text-transform: uppercase;
 }
 
 .works-close {

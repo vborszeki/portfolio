@@ -64,12 +64,12 @@
   display: flex;
   align-items: center;
   color: #000;
-  cursor: pointer;
 }
 
 .project-category-selected,
 .project-category-element {
   padding-left: 21px;
+  text-transform: uppercase;
 }
 
 .project-category-list li a {

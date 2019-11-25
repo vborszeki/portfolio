@@ -45,7 +45,7 @@ const ProjectMobile = ({ language, toggleLanguage }) => {
   return (
     <main>
       <header className="project-mobile__header">
-        {project.title && project.title.toUpperCase()}
+        {project.title}
         <ContainerDimensions>
           {({ height }) => <MobileClose height={height} />}
         </ContainerDimensions>
