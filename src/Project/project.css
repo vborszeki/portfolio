@@ -100,6 +100,7 @@
 
 .project-title p {
   margin: 0;
+  text-transform: uppercase;
 }
 
 .photo-counter {
