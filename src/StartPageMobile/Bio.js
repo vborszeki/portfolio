@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useRect } from '@reach/rect';
 import Selected from '../Selected/Selected';
-import ContainerDimensions from 'react-container-dimensions';
 import useBio from '../Bio/useBio';
 import './bio.css';
 
 const Bio = ({ isOpen, toggleBio, language, toggleLanguage }) => {
   const bio = useBio(language);
+  const ref = useRef();
+  const rect = useRect(ref);
 
   return (
     <>
-      <div className="bio-mobile__title" onClick={!isOpen ? toggleBio : null}>
+      <div
+        className="bio-mobile__title"
+        onClick={!isOpen ? toggleBio : null}
+        ref={ref}
+      >
         BENETAMAS
         {isOpen && (
-          <ContainerDimensions>
-            {({ height }) => (
-              <div className="bio-mobile__close" onClick={toggleBio}>
-                <Selected height={height} />
-              </div>
-            )}
-          </ContainerDimensions>
+          <div className="bio-mobile__close" onClick={toggleBio}>
+            <Selected height={rect && rect.height} />
+          </div>
         )}
       </div>
       {isOpen && (

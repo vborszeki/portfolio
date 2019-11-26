@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ContainerDimensions from 'react-container-dimensions';
+import { useRect } from '@reach/rect';
 import Wrapper from '../Wrapper/Wrapper';
 import Selected from '../Selected/Selected';
 import { projectsPlaceholder } from './projectsPlaceholder';
@@ -11,6 +11,8 @@ const Works = ({ category }) => {
   const [hoveredElement, setHoveredElement] = useState('');
   const [friendlyUrlTitle, setFriendlyUrlTitle] = useState('');
   const [projects, setProjects] = useState(projectsPlaceholder);
+  const ref = useRef();
+  const rect = useRect(ref);
 
   useEffect(() => {
     fetchProjectsForCategory(category);
@@ -124,18 +126,14 @@ const Works = ({ category }) => {
               {categories.map(categoryName => {
                 const isSelected = category === categoryName;
                 return (
-                  <li className={categoryName} key={categoryName}>
+                  <li className={categoryName} key={categoryName} ref={ref}>
                     {isSelected ? (
-                      <ContainerDimensions>
-                        {({ height }) => (
-                          <div className="works-category-selected">
-                            {categoryName}
-                            <Link to="/" className="works-close">
-                              <Selected height={height} />
-                            </Link>
-                          </div>
-                        )}
-                      </ContainerDimensions>
+                      <div className="works-category-selected">
+                        {categoryName}
+                        <Link to="/" className="works-close">
+                          <Selected height={rect && rect.height} />
+                        </Link>
+                      </div>
                     ) : (
                       <Link
                         to={`/${categoryName}`}

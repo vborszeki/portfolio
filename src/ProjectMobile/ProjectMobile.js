@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import ContainerDimensions from 'react-container-dimensions';
+import { useRect } from '@reach/rect';
 import LazyLoad from 'react-lazyload';
 import smoothscroll from 'smoothscroll-polyfill';
 import MobileClose from './MobileClose';
@@ -10,6 +10,9 @@ const ProjectMobile = ({ language, toggleLanguage }) => {
   const [project, setProject] = useState({ photos: [{ photoUrl: '' }] });
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const { category, projectTitle } = useParams();
+  const ref = useRef();
+  const rect = useRect(ref);
+  const width = window.innerWidth;
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -44,11 +47,9 @@ const ProjectMobile = ({ language, toggleLanguage }) => {
 
   return (
     <main>
-      <header className="project-mobile__header">
+      <header className="project-mobile__header" ref={ref}>
         {project.title}
-        <ContainerDimensions>
-          {({ height }) => <MobileClose height={height} />}
-        </ContainerDimensions>
+        <MobileClose height={rect && rect.height} />
       </header>
       <section
         className={
@@ -65,21 +66,17 @@ const ProjectMobile = ({ language, toggleLanguage }) => {
       {!isDescriptionExpanded && (
         <>
           {project.photos.map((photo, id) => (
-            <ContainerDimensions key={id}>
-              {({ width }) => (
-                <>
-                  <LazyLoad height={width} offset={width} once>
-                    <div
-                      className="project-mobile__photo"
-                      style={{ height: width }}
-                    >
-                      <img src={photo.photoUrl} alt="" />
-                    </div>
-                  </LazyLoad>
-                  <div className="project-mobile__gutter" />
-                </>
-              )}
-            </ContainerDimensions>
+            <div key={id}>
+              <LazyLoad height={width} offset={width} once>
+                <div
+                  className="project-mobile__photo"
+                  style={{ height: width }}
+                >
+                  <img src={photo.photoUrl} alt="" />
+                </div>
+              </LazyLoad>
+              <div className="project-mobile__gutter" />
+            </div>
           ))}
           <footer
             className="project-mobile__footer"

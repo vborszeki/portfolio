@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ContainerDimensions from 'react-container-dimensions';
+import { useRect } from '@reach/rect';
 import Wrapper from '../Wrapper/Wrapper';
 import ProjectPager from './ProjectPager';
 import './project.css';
@@ -9,6 +9,8 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
   const [project, setProject] = useState({ photos: [{ photoUrl: '' }] });
   const [indexOfPhoto, setIndexOfPhoto] = useState(0);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const ref = useRef();
+  const rect = useRect(ref);
 
   useEffect(() => {
     const fetchProject = async (title, categoryName = category) => {
@@ -63,36 +65,29 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
     const isSelected = category === categoryName;
 
     return (
-      <li className={categoryName} key={categoryName}>
-        <ContainerDimensions>
-          {({ width, height }) => (
+      <li className={categoryName} key={categoryName} ref={ref}>
+        <>
+          {isSelected ? (
             <>
-              {isSelected ? (
-                <>
-                  <span
-                    className="project-category-selected"
-                    style={{ width: width / 4 }}
-                  >
-                    {categoryName}
-                  </span>
-                  <ProjectPager
-                    counter={counter}
-                    height={height}
-                    project={project}
-                    category={category}
-                  />
-                </>
-              ) : (
-                <Link
-                  to={`/${categoryName}`}
-                  className="project-category-element"
-                >
-                  {categoryName}
-                </Link>
-              )}
+              <span
+                className="project-category-selected"
+                style={{ width: rect && rect.width / 4 }}
+              >
+                {categoryName}
+              </span>
+              <ProjectPager
+                counter={counter}
+                height={rect && rect.height}
+                project={project}
+                category={category}
+              />
             </>
+          ) : (
+            <Link to={`/${categoryName}`} className="project-category-element">
+              {categoryName}
+            </Link>
           )}
-        </ContainerDimensions>
+        </>
       </li>
     );
   };
@@ -165,11 +160,15 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                 {project.description}
               </p>
             </div>
-            {!isDescriptionExpanded && (
-              <ul className="project-category-list">
-                {categories.map(category => renderClickableCategory(category))}
-              </ul>
-            )}
+            <ul
+              className={
+                !isDescriptionExpanded
+                  ? 'project-category-list'
+                  : 'project-category-list--expanded'
+              }
+            >
+              {categories.map(category => renderClickableCategory(category))}
+            </ul>
           </div>
         </div>
         <nav>
