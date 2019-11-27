@@ -65,7 +65,13 @@ const Bio = ({ language, toggleLanguage }) => {
           <section className={isBioExpanded ? 'bio--expanded' : 'bio'}>
             <div className="bio-title">
               <p>Bio</p>
-              <span className="bio-language" onClick={toggleLanguage}>
+              <span
+                className="bio-language"
+                role="button"
+                tabIndex="0"
+                onClick={toggleLanguage}
+                onKeyPress={toggleLanguage}
+              >
                 {language === 'hu' ? 'en' : 'hu'}
               </span>
             </div>

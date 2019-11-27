@@ -146,7 +146,13 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                   <span className="project-subtitle">{project.subtitle}</span>
                 </div>
                 {project.title && (
-                  <div className="project-language" onClick={toggleLanguage}>
+                  <div
+                    className="project-language"
+                    role="button"
+                    tabIndex="0"
+                    onClick={toggleLanguage}
+                    onKeyPress={toggleLanguage}
+                  >
                     {language === 'hu' ? 'en' : 'hu'}
                   </div>
                 )}

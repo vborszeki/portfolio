@@ -51,9 +51,9 @@ const StartPageMobile = ({
       </div>
       {height < window.innerHeight &&
         13 - height / (window.innerHeight / 13) > 0 &&
-        [...Array(Math.ceil(13 - height / (window.innerHeight / 13)))].map(
-          (e, i) => <EmptyRow key={i} />
-        )}
+        [
+          ...Array(Math.ceil(13 - height / (window.innerHeight / 13)))
+        ].map((e, i) => <EmptyRow key={i} />)}
     </>
   );
 };

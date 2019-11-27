@@ -44,9 +44,14 @@ const App = () => {
     }
   };
 
-  const toggleLanguage = () => {
+  const toggleLanguage = e => {
     const lang = language === 'hu' ? 'en' : 'hu';
-    setLanguage(lang);
+
+    if (e.type === 'click') {
+      setLanguage(lang);
+    } else if (e.key === 'Enter') {
+      setLanguage(lang);
+    }
   };
 
   const toggleCategory = category => {
