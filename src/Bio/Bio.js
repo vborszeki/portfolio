@@ -21,9 +21,15 @@ const Bio = ({ language, toggleLanguage }) => {
     }
   };
 
-  const handeBioClick = () => {
+  const handleBioClick = () => {
     if (window.getSelection().toString()) return;
     setIsBioExpanded(!isBioExpanded);
+  };
+
+  const handleBioKeyPress = e => {
+    if (e.key === 'Enter') {
+      setIsBioExpanded(!isBioExpanded);
+    }
   };
 
   return (
@@ -77,7 +83,9 @@ const Bio = ({ language, toggleLanguage }) => {
             </div>
             <p
               className={isBioExpanded ? 'bio-text--expanded' : 'bio-text'}
-              onClick={handeBioClick}
+              tabIndex="0"
+              onClick={handleBioClick}
+              onKeyPress={handleBioKeyPress}
             >
               {bio}
             </p>

@@ -37,6 +37,12 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
     setIsDescriptionExpanded(!isDescriptionExpanded);
   };
 
+  const handleDescriptionKeyPress = e => {
+    if (e.key === 'Enter') {
+      setIsDescriptionExpanded(!isDescriptionExpanded);
+    }
+  };
+
   const handleNextPhotoClick = () => {
     if (indexOfPhoto === project.numberOfPhotos - 1) {
       setIndexOfPhoto(0);
@@ -174,7 +180,12 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
                     : ''}
                 </p>
               </div>
-              <p className="project-text" onClick={handleDescriptionClick}>
+              <p
+                className="project-text"
+                tabIndex="0"
+                onClick={handleDescriptionClick}
+                onKeyPress={handleDescriptionKeyPress}
+              >
                 {project.description}
               </p>
             </div>
