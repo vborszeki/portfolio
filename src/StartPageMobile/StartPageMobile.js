@@ -3,7 +3,7 @@ import Works from './Works';
 import Contact from './Contact';
 import Links from './Links';
 import Bio from './Bio';
-import EmptyRow from './EmptyRow';
+import EmptyRows from './EmptyRows';
 import './startPageMobile.css';
 
 const StartPageMobile = ({
@@ -13,11 +13,12 @@ const StartPageMobile = ({
   language,
   toggleLanguage
 }) => {
-  const [height, setHeight] = useState(0);
+  const [contentHeight, setContentHeight] = useState(0);
 
   useEffect(() => {
-    const height = document.querySelector('.start-page-mobile').offsetHeight;
-    setHeight(height);
+    const contentHeight = document.querySelector('.start-page-mobile')
+      .offsetHeight;
+    setContentHeight(contentHeight);
   }, [toggleCategory]);
 
   const categories = ['architecture', 'installation', 'object', 'experiment'];
@@ -49,11 +50,7 @@ const StartPageMobile = ({
           toggleLanguage={toggleLanguage}
         />
       </div>
-      {height < window.innerHeight &&
-        13 - height / (window.innerHeight / 13) > 0 &&
-        [
-          ...Array(Math.ceil(13 - height / (window.innerHeight / 13)))
-        ].map((e, i) => <EmptyRow key={i} />)}
+      <EmptyRows contentHeight={contentHeight} />
     </>
   );
 };
