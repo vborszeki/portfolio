@@ -79,6 +79,7 @@ const Works = ({ category }) => {
                   onMouseOut={handleProjectMouseOut}
                   onFocus={handleProjectMouseOver}
                   onBlur={handleProjectMouseOut}
+                  tabIndex="-1"
                 >
                   <img
                     src={project.photo.photoUrl}

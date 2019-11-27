@@ -53,6 +53,18 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
     }
   };
 
+  const handleNextPhotoKeyPress = e => {
+    if (e.key === 'Enter') {
+      handleNextPhotoClick();
+    }
+  };
+
+  const handlePrevPhotoKeyPress = e => {
+    if (e.key === 'Enter') {
+      handlePrevPhotoClick();
+    }
+  };
+
   const getImagesToPreload = () =>
     project.photos.slice(indexOfPhoto + 1, indexOfPhoto + 2);
 
@@ -120,14 +132,14 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
               aria-label="previous"
               role="button"
               tabIndex="0"
-              onKeyPress={handlePrevPhotoClick}
+              onKeyPress={handlePrevPhotoKeyPress}
             />
             <div
               className="aria-next-photo"
               aria-label="next"
               role="button"
               tabIndex="0"
-              onKeyPress={handleNextPhotoClick}
+              onKeyPress={handleNextPhotoKeyPress}
             />
             <div className="prev-photo" onClick={handlePrevPhotoClick} />
             <div className="next-photo" onClick={handleNextPhotoClick} />
