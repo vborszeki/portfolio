@@ -40,6 +40,7 @@ const Works = ({ category }) => {
       hoveredElement = 'works-title-link';
     } else if (
       targetClassName.includes('works-photo-link') &&
+      e.currentTarget.childNodes[0] &&
       e.currentTarget.childNodes[0].getAttribute('src') !== ''
     ) {
       projectId = e.currentTarget.parentNode.value;
@@ -81,16 +82,18 @@ const Works = ({ category }) => {
                   onBlur={handleProjectMouseOut}
                   tabIndex="-1"
                 >
-                  <img
-                    src={project.photo.photoUrl}
-                    alt=""
-                    className={
-                      hoveredElement === 'works-title-link' &&
-                      project.friendlyUrlTitle !== friendlyUrlTitle
-                        ? 'hide-project-image'
-                        : null
-                    }
-                  />
+                  {project.photo.photoUrl && (
+                    <img
+                      src={project.photo.photoUrl}
+                      alt=""
+                      className={
+                        hoveredElement === 'works-title-link' &&
+                        project.friendlyUrlTitle !== friendlyUrlTitle
+                          ? 'hide-project-image'
+                          : null
+                      }
+                    />
+                  )}
                 </Link>
               </li>
             ))}
