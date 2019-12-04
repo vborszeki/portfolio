@@ -93,12 +93,14 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
               >
                 {categoryName}
               </span>
-              <ProjectPager
-                counter={counter}
-                height={rect && rect.height}
-                project={project}
-                category={category}
-              />
+              {rect && (
+                <ProjectPager
+                  counter={counter}
+                  height={rect.height}
+                  project={project}
+                  category={category}
+                />
+              )}
             </>
           ) : (
             <Link to={`/${categoryName}`} className="project-category-element">

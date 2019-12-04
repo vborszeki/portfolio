@@ -132,7 +132,7 @@ const Works = ({ category }) => {
                       <div className="works-category-selected">
                         {categoryName}
                         <Link to="/" className="works-close">
-                          <Selected height={rect && rect.height} />
+                          {rect && <Selected height={rect.height} />}
                         </Link>
                       </div>
                     ) : (
