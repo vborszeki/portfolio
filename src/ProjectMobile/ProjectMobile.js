@@ -70,7 +70,7 @@ const ProjectMobile = ({ language, toggleLanguage }) => {
               <LazyLoad height={width} offset={width} once>
                 <div
                   className="project-mobile__photo"
-                  style={{ height: width }}
+                  style={{ height: rect && rect.width }}
                 >
                   <img src={photo.photoUrl} alt="" />
                 </div>
