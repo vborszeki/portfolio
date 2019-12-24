@@ -119,18 +119,15 @@ const Project = ({ category, projectTitle, language, toggleLanguage }) => {
           <div className="project-photos">
             <img
               src={
-                project.photos &&
-                project.photos.length > 0 &&
-                project.photos[indexOfPhoto] &&
-                project.photos[indexOfPhoto].photoUrl
+                project.photos?.length > 0 &&
+                project.photos[indexOfPhoto]?.photoUrl
                   ? project.photos[indexOfPhoto].photoUrl
                   : ''
               }
               alt=""
             />
             <div className="project-photos__preloaded">
-              {project.photos &&
-                project.photos.length > 1 &&
+              {project.photos?.length > 1 &&
                 getImagesToPreload().map(image => (
                   <img key={image.photoUrl} src={image.photoUrl} alt="" />
                 ))}
